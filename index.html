@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio — Hussain AL SHAQSI · BUT Réseaux & Télécommunications</title>
+<meta name="description" content="E-portfolio S2 — BUT Réseaux & Télécommunications. Attestation des compétences RT1 Administrer, RT2 Connecter, RT3 Créer." />
+
+<!-- ============================================================
+     ⚙️  À REMPLACER  →  cherchez les symboles 〔 〕 (identité) et [ ] (vos textes)
+     · Les RESSOURCES et SAÉ ci-dessous sont VRAIES (tirées de votre relevé) — ne touchez qu'aux 〔 〕 et [ ].
+     · Les blocs « Réflexion personnelle » et « Profil/Bilan » sont à rédiger : c'est le cœur de la note.
+     · Images : remplacez les blocs <svg> par <img src="..."> (mettez vos fichiers à côté du index.html).
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* =============================================================
+   Portfolio BUT R&T — feuille de style
+   Direction : éditorial-corporate · papier clair · accents par compétence
+   Typo : Fraunces (titres) · IBM Plex Sans (texte) · IBM Plex Mono (méta)
+   ============================================================= */
+
+:root {
+  --paper:      #F4F6F9;
+  --paper-2:    #FFFFFF;
+  --ink:        #0E1726;
+  --ink-soft:   #4A5468;
+  --ink-faint:  #8A93A6;
+  --line:       rgba(14, 23, 38, 0.10);
+  --line-soft:  rgba(14, 23, 38, 0.06);
+
+  /* accent dominant + accents par compétence */
+  --accent:     #1B4DFF;   /* RT1 — Administrer */
+  --rt1:        #1B4DFF;
+  --rt2:        #0E9B8E;   /* RT2 — Connecter   */
+  --rt3:        #E0660A;   /* RT3 — Créer       */
+
+  --radius:     14px;
+  --radius-sm:  9px;
+  --shadow:     0 1px 2px rgba(14,23,38,.05), 0 12px 32px -12px rgba(14,23,38,.16);
+  --shadow-lg:  0 24px 60px -20px rgba(14,23,38,.28);
+  --maxw:       1080px;
+  --ease:       cubic-bezier(.22, 1, .36, 1);
+
+  --f-display:  "Fraunces", Georgia, serif;
+  --f-body:     "IBM Plex Sans", system-ui, sans-serif;
+  --f-mono:     "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+
+body {
+  font-family: var(--f-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.mono { font-family: var(--f-mono); letter-spacing: .02em; }
+
+/* ---- blueprint backdrop ---- */
+.bg-grid {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 100%);
+          mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 100%);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* =============================== NAV =============================== */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px clamp(20px, 5vw, 56px);
+  background: rgba(244,246,249,.78);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.nav__mark {
+  font-family: var(--f-mono); font-weight: 600; font-size: .82rem;
+  color: #fff; background: var(--ink); padding: 5px 8px; border-radius: 7px; letter-spacing: .05em;
+}
+.nav__name { font-size: .98rem; letter-spacing: .01em; }
+.nav__links { display: flex; align-items: center; gap: 30px; }
+.nav__links a { font-size: .92rem; color: var(--ink-soft); position: relative; transition: color .2s; }
+.nav__links a:not(.nav__cta)::after {
+  content: ""; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px;
+  background: var(--accent); transition: width .25s var(--ease);
+}
+.nav__links a:hover { color: var(--ink); }
+.nav__links a:hover::after { width: 100%; }
+.nav__cta {
+  background: var(--ink); color: #fff !important; padding: 8px 16px; border-radius: 8px;
+  font-weight: 500; transition: transform .2s, background .2s;
+}
+.nav__cta:hover { background: var(--accent); transform: translateY(-1px); }
+.nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; }
+.nav__burger span { width: 24px; height: 2px; background: var(--ink); transition: .3s; }
+
+/* =============================== LAYOUT =============================== */
+main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+
+.section { padding: clamp(64px, 9vw, 120px) 0; border-top: 1px solid var(--line); }
+.section__head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 40px; }
+.section__idx { font-size: .9rem; color: var(--accent); font-weight: 600; }
+.section__title { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.9rem, 4vw, 2.9rem); letter-spacing: -.02em; }
+.section__intro { max-width: 60ch; color: var(--ink-soft); font-size: 1.06rem; margin-bottom: 48px; }
+.section__intro em, .comp__col em { font-style: normal; color: var(--ink); font-weight: 600; }
+
+/* =============================== HERO =============================== */
+.hero { padding: clamp(70px, 12vw, 150px) 0 clamp(50px, 7vw, 90px); }
+.hero__meta { font-size: .82rem; color: var(--accent); font-weight: 600; margin-bottom: 26px; }
+.hero__title {
+  font-family: var(--f-display); font-weight: 600;
+  font-size: clamp(2.8rem, 9vw, 6rem); line-height: .98; letter-spacing: -.035em; margin-bottom: 30px;
+}
+.hero__pre { display: block; font-size: clamp(1rem, 2.4vw, 1.4rem); font-weight: 400; font-style: italic; color: var(--ink-soft); letter-spacing: 0; margin-bottom: 6px; }
+.hero__last { color: var(--accent); }
+.hero__lede { max-width: 56ch; font-size: clamp(1.05rem, 2vw, 1.22rem); color: var(--ink-soft); }
+.hero__lede strong { color: var(--ink); font-weight: 600; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 36px 0 30px; }
+.hero__chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+.hero__chips li {
+  font-size: .8rem; padding: 7px 13px; border: 1px solid var(--line);
+  border-radius: 999px; background: var(--paper-2); color: var(--ink-soft);
+}
+.hero__chips li:nth-child(1) { border-color: color-mix(in srgb, var(--rt1) 35%, var(--line)); }
+.hero__chips li:nth-child(2) { border-color: color-mix(in srgb, var(--rt2) 35%, var(--line)); }
+.hero__chips li:nth-child(3) { border-color: color-mix(in srgb, var(--rt3) 35%, var(--line)); }
+
+/* =============================== BUTTONS =============================== */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font-size: .94rem; font-weight: 500;
+  padding: 11px 20px; border-radius: 10px; border: 1px solid transparent; cursor: pointer;
+  transition: transform .2s var(--ease), background .2s, border-color .2s, box-shadow .2s;
+}
+.btn--solid { background: var(--ink); color: #fff; }
+.btn--solid:hover { background: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn--ghost { background: var(--paper-2); border-color: var(--line); color: var(--ink); }
+.btn--ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+/* =============================== PROFIL =============================== */
+.profil { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.profil__photo { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); background: var(--paper-2); }
+.profil__photo img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.profil__text .lead { font-size: 1.22rem; color: var(--ink); margin-bottom: 18px; line-height: 1.5; }
+.profil__text p { color: var(--ink-soft); margin-bottom: 16px; }
+.profil__facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 28px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
+.profil__facts div { display: flex; flex-direction: column; gap: 4px; font-size: .98rem; }
+.profil__facts span { font-size: .74rem; text-transform: uppercase; color: var(--ink-faint); letter-spacing: .08em; }
+
+/* =============================== COMPÉTENCES =============================== */
+.comp {
+  background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(24px, 4vw, 40px); margin-bottom: 26px; box-shadow: var(--shadow);
+  position: relative; overflow: hidden; --c: var(--accent);
+}
+.comp::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
+.comp--rt1 { --c: var(--rt1); }
+.comp--rt2 { --c: var(--rt2); }
+.comp--rt3 { --c: var(--rt3); }
+.comp__head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 28px; }
+.comp__code {
+  font-size: .85rem; font-weight: 600; color: #fff; background: var(--c);
+  padding: 5px 11px; border-radius: 7px; letter-spacing: .06em;
+}
+.comp__title { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.8rem); letter-spacing: -.015em; flex: 1 1 280px; }
+.comp__tag { width: 100%; font-size: .78rem; color: var(--ink-faint); }
+.comp__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); }
+.comp__col h4 { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--c); margin: 22px 0 12px; }
+.comp__col h4:first-child { margin-top: 0; }
+
+.ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.ticks li { position: relative; padding-left: 24px; color: var(--ink-soft); font-size: .98rem; }
+.ticks li::before {
+  content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px;
+  border-radius: 2px; background: var(--c); transform: rotate(45deg);
+}
+
+.reslist {
+  font-size: .8rem; line-height: 1.7; color: var(--ink-faint);
+  background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--c);
+  border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 4px;
+}
+.proof { display: flex; flex-direction: column; gap: 8px; }
+.proof__item {
+  display: flex; align-items: center; gap: 11px; padding: 12px 14px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  font-size: .92rem; color: var(--ink-soft); transition: border-color .2s, transform .2s, color .2s;
+}
+.proof__item:hover { border-color: var(--c); color: var(--ink); transform: translateX(3px); }
+.proof__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex-shrink: 0; }
+
+.reflect {
+  border-left: 3px solid var(--c); padding: 4px 0 4px 18px; margin-top: 4px;
+  font-family: var(--f-display); font-size: 1.05rem; font-style: italic;
+  color: var(--ink-soft); line-height: 1.6;
+}
+
+/* =============================== PROJETS =============================== */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
+.card {
+  background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); transition: transform .3s var(--ease), box-shadow .3s;
+  display: flex; flex-direction: column;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.card__img { aspect-ratio: 16/10; overflow: hidden; background: var(--paper); border-bottom: 1px solid var(--line); }
+.card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+.card:hover .card__img img { transform: scale(1.05); }
+.card__body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.card__tags { display: flex; gap: 6px; margin-bottom: 10px; }
+.t { font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 6px; color: #fff; }
+.t--rt1 { background: var(--rt1); } .t--rt2 { background: var(--rt2); } .t--rt3 { background: var(--rt3); }
+.card__title { font-family: var(--f-display); font-weight: 500; font-size: 1.22rem; margin-bottom: 8px; letter-spacing: -.01em; }
+.card__desc { color: var(--ink-soft); font-size: .94rem; flex: 1; }
+.card__links { display: flex; gap: 16px; margin-top: 16px; font-size: .84rem; }
+.card__links a { color: var(--accent); font-weight: 600; transition: opacity .2s; }
+.card__links a:hover { opacity: .65; }
+
+/* =============================== BILAN =============================== */
+.bilan { max-width: 64ch; }
+.bilan .lead { font-size: 1.3rem; font-family: var(--f-display); line-height: 1.5; margin-bottom: 20px; }
+.bilan p { color: var(--ink-soft); }
+
+/* =============================== FOOTER =============================== */
+.footer { border-top: 1px solid var(--line); margin-top: 40px; padding: clamp(60px, 9vw, 110px) clamp(20px, 5vw, 40px) 50px; text-align: center; }
+.footer__cta h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -.02em; margin-bottom: 12px; }
+.footer__cta p { color: var(--ink-soft); margin-bottom: 26px; }
+.footer__links { display: flex; justify-content: center; gap: 26px; margin: 38px 0 24px; font-size: .9rem; }
+.footer__links a { color: var(--ink-soft); transition: color .2s; }
+.footer__links a:hover { color: var(--accent); }
+.footer__base { font-size: .78rem; color: var(--ink-faint); }
+
+/* =============================== REVEAL ANIM =============================== */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* =============================== RESPONSIVE =============================== */
+@media (max-width: 860px) {
+  .profil { grid-template-columns: 1fr; }
+  .profil__photo { max-width: 220px; }
+  .comp__grid { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (max-width: 680px) {
+  .nav__links { position: fixed; inset: 64px 0 auto; flex-direction: column; gap: 0;
+    background: var(--paper-2); border-bottom: 1px solid var(--line); padding: 8px 0;
+    transform: translateY(-130%); transition: transform .35s var(--ease); }
+  .nav__links.open { transform: none; }
+  .nav__links a { padding: 14px 28px; width: 100%; }
+  .nav__links a:not(.nav__cta)::after { display: none; }
+  .nav__cta { margin: 8px 28px; text-align: center; }
+  .nav__burger { display: flex; }
+  .profil__facts { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="top">
+  <a class="nav__brand" href="#top">
+    <span class="nav__mark">RT</span>
+    <span class="nav__name">Hussain AL SHAQSI</span>
+  </a>
+  <nav class="nav__links" aria-label="Navigation principale">
+    <a href="#profil">Profil</a>
+    <a href="#competences">Compétences</a>
+    <a href="#projets">SAÉ &amp; Projets</a>
+    <a href="#bilan">Bilan</a>
+    <a href="#contact" class="nav__cta">Contact</a>
+  </nav>
+  <button class="nav__burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero reveal" id="hero">
+  <div class="hero__meta mono">E-PORTFOLIO · SEMESTRE 2 · 2025–2026</div>
+  <h1 class="hero__title">
+    <span class="hero__pre">Portfolio de</span>
+    Hussain<br><span class="hero__last">AL SHAQSI</span>
+  </h1>
+  <p class="hero__lede">
+    Étudiant en <strong>BUT Réseaux&nbsp;&amp;&nbsp;Télécommunications</strong> à l'IUT de Colmar.
+    Ce portfolio atteste de mes <strong>trois compétences</strong> — Administrer, Connecter, Créer —
+    développées au fil des ressources et des SAÉ de l'année.
+  </p>
+  <div class="hero__actions">
+    <a class="btn btn--solid" href="#competences">Voir les compétences →</a>
+    <a class="btn btn--ghost" href="https://github.com/〔pseudo〕" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn btn--ghost" href="https://www.linkedin.com/in/〔profil〕" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn btn--ghost" href="assets/CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+  </div>
+  <ul class="hero__chips mono">
+    <li>RT1 · Administrer</li>
+    <li>RT2 · Connecter</li>
+    <li>RT3 · Créer</li>
+  </ul>
+</section>
+
+<!-- ============================ PROFIL ============================ -->
+<section class="section reveal" id="profil">
+  <div class="section__head"><span class="section__idx mono">01</span><h2 class="section__title">Profil</h2></div>
+  <div class="profil">
+    <!-- Remplacez ce <svg> par <img src="ma-photo.jpg" alt="Hussain AL SHAQSI"> (votre photo est sur votre CV) -->
+    <figure class="profil__photo"><svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;aspect-ratio:1;display:block;background:#EDF0F5"><g fill="none" stroke="#C7CEDB" stroke-width="2"><circle cx="300" cy="240" r="92"/><path d="M150 470c0-90 67-150 150-150s150 60 150 150" stroke-linecap="round"/></g><text x="300" y="545" text-anchor="middle" font-family="monospace" font-size="22" fill="#9AA3B5">photo &#8594; ici</text></svg></figure>
+    <div class="profil__text">
+      <p class="lead">Étudiant en BUT Réseaux &amp; Télécommunications à l'IUT de Colmar, je suis passionné par les réseaux, les systèmes et la cybersécurité. Mon parcours international — de l'International School of Oman jusqu'aux IUT français — m'a appris à m'adapter et à apprendre vite, en arabe, en anglais (C2) et en français.</p>
+      <p>Avant le BUT, j'ai suivi un diplôme universitaire de préparation linguistique et scientifique à Limoges, puis une première année de Licence Mathématiques-Informatique à Strasbourg. Un stage de support informatique chez Biyaq Oil Field Services (Mascate) m'a confronté au terrain : assistance aux utilisateurs, diagnostic de pannes, configuration d'équipements et rédaction de documentation technique. Je consolide aujourd'hui ces bases en réseaux, transmission et programmation, avec pour objectif une alternance en réseaux, systèmes ou support informatique.</p>
+      <div class="profil__facts">
+        <div><span class="mono">Formation</span>BUT R&amp;T · 1ʳᵉ année</div>
+        <div><span class="mono">Établissement</span>IUT de Colmar · UHA</div>
+        <div><span class="mono">Période</span>2025–2026</div>
+        <div><span class="mono">Objectif</span>Alternance · parcours Cybersécurité</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COMPÉTENCES ============================ -->
+<section class="section reveal" id="competences">
+  <div class="section__head"><span class="section__idx mono">02</span><h2 class="section__title">Les trois compétences</h2></div>
+  <p class="section__intro">
+    Le référentiel du BUT R&amp;T s'articule autour de trois compétences, développées sur les deux semestres.
+    Pour chacune : les <em>apprentissages critiques</em>, les <em>situations professionnelles</em> (mes SAÉ),
+    les <em>ressources</em> mobilisées, les <em>preuves</em> et une <em>réflexion personnelle</em>.
+  </p>
+
+  <!-- ----------- RT1 ----------- -->
+  <article class="comp comp--rt1">
+    <header class="comp__head">
+      <span class="comp__code mono">RT1</span>
+      <h3 class="comp__title">Administrer les réseaux et l'Internet</h3>
+      <p class="comp__tag mono">UE1.1 + UE2.1 · Architecture · Réseaux locaux · Virtualisation · Services</p>
+    </header>
+    <div class="comp__grid">
+      <div class="comp__col">
+        <h4>Apprentissages critiques</h4>
+        <ul class="ticks">
+          <li>Comprendre l'architecture d'un réseau et le rôle des équipements actifs</li>
+          <li>Configurer un réseau local : adressage IP, VLAN, routage</li>
+          <li>Administrer un système et mettre en œuvre la virtualisation</li>
+          <li>Déployer les services de l'Internet (DNS, DHCP, web, téléphonie)</li>
+        </ul>
+        <h4>Situations professionnelles (SAÉ)</h4>
+        <ul class="ticks">
+          <li><strong>SAÉ2.01</strong> — Construire un réseau informatique pour une petite structure</li>
+          <li><strong>SAÉ1.02</strong> — S'initier aux réseaux informatiques</li>
+        </ul>
+      </div>
+      <div class="comp__col">
+        <h4>Ressources mobilisées</h4>
+        <p class="reslist mono">R1.01 Initiation réseaux locaux · R1.02 Principes &amp; architecture · R1.03 Équipements actifs · R2.01 Technologie de l'Internet · R2.02 Administration système &amp; virtualisation · R2.03 Services réseaux · R2.04 Téléphonie d'entreprise</p>
+        <h4>Preuves &amp; réalisations</h4>
+        <div class="proof">
+          <a class="proof__item" href="#projets"><span class="proof__dot"></span><span>SAÉ2.01 — schéma + configuration du réseau réalisé →</span></a>
+          <a class="proof__item" href="#projets"><span class="proof__dot"></span><span>[ Capture / config / topologie — décrivez la preuve ] →</span></a>
+        </div>
+        <h4>Réflexion personnelle</h4>
+        <blockquote class="reflect">[ Ce que RT1 m'a appris, les difficultés rencontrées (ex. adressage, VLAN) et comment je les ai surmontées, mon niveau d'autonomie. Soyez personnel·le et argumenté·e. ]</blockquote>
+      </div>
+    </div>
+  </article>
+
+  <!-- ----------- RT2 ----------- -->
+  <article class="comp comp--rt2">
+    <header class="comp__head">
+      <span class="comp__code mono">RT2</span>
+      <h3 class="comp__title">Connecter les entreprises et les usagers</h3>
+      <p class="comp__tag mono">UE1.2 + UE2.2 · Électronique · Transmission · Signaux · Téléphonie</p>
+    </header>
+    <div class="comp__grid">
+      <div class="comp__col">
+        <h4>Apprentissages critiques</h4>
+        <ul class="ticks">
+          <li>Caractériser un signal et une chaîne de transmission</li>
+          <li>Mettre en œuvre des supports de transmission (cuivre, fibre, sans-fil)</li>
+          <li>Numériser et traiter l'information</li>
+          <li>Déployer une solution de téléphonie d'entreprise</li>
+        </ul>
+        <h4>Situations professionnelles (SAÉ)</h4>
+        <ul class="ticks">
+          <li><strong>SAÉ2.02</strong> — Mesurer et caractériser un signal ou un système</li>
+          <li><strong>SAÉ1.03</strong> — Découvrir un dispositif de transmission</li>
+        </ul>
+      </div>
+      <div class="comp__col">
+        <h4>Ressources mobilisées</h4>
+        <p class="reslist mono">R1.04 Systèmes électroniques · R1.05 Supports de transmission · R2.05 Signaux &amp; systèmes · R2.06 Numérisation de l'information · R2.04 Téléphonie · R2.14 Analyse mathématique des signaux</p>
+        <h4>Preuves &amp; réalisations</h4>
+        <div class="proof">
+          <a class="proof__item" href="#projets"><span class="proof__dot"></span><span>SAÉ2.02 — relevés de mesures / caractérisation →</span></a>
+          <a class="proof__item" href="#projets"><span class="proof__dot"></span><span>[ Mesure / schéma / capture — décrivez la preuve ] →</span></a>
+        </div>
+        <h4>Réflexion personnelle</h4>
+        <blockquote class="reflect">[ Votre réflexion sur RT2 : apprentissages, difficultés (ex. mesures, traitement du signal), progression, autonomie. ]</blockquote>
+      </div>
+    </div>
+  </article>
+
+  <!-- ----------- RT3 ----------- -->
+  <article class="comp comp--rt3">
+    <header class="comp__head">
+      <span class="comp__code mono">RT3</span>
+      <h3 class="comp__title">Créer des outils et applications informatiques pour les R&amp;T</h3>
+      <p class="comp__tag mono">UE1.3 + UE2.3 · Programmation · Données · Développement web</p>
+    </header>
+    <div class="comp__grid">
+      <div class="comp__col">
+        <h4>Apprentissages critiques</h4>
+        <ul class="ticks">
+          <li>Concevoir un algorithme et le traduire en programme</li>
+          <li>Manipuler et traiter des données structurées (sources de données)</li>
+          <li>Développer une application / un site web</li>
+          <li>Mettre en place une solution informatique pour l'entreprise</li>
+        </ul>
+        <h4>Situations professionnelles (SAÉ)</h4>
+        <ul class="ticks">
+          <li><strong>SAÉ2.03</strong> — Mettre en place une solution informatique pour l'entreprise</li>
+          <li><strong>SAÉ1.04</strong> — Se présenter sur Internet &nbsp;·&nbsp; <strong>SAÉ1.05</strong> — Traiter des données</li>
+        </ul>
+      </div>
+      <div class="comp__col">
+        <h4>Ressources mobilisées</h4>
+        <p class="reslist mono">R1.07 Fondamentaux programmation · R1.08 Systèmes d'exploitation · R1.09 Technologies Web · R2.07 Sources de données · R2.08 Traitement de données structurées · R2.09 Développement Web</p>
+        <h4>Preuves &amp; réalisations</h4>
+        <div class="proof">
+          <a class="proof__item" href="#projets"><span class="proof__dot"></span><span>SAÉ2.03 — solution développée (code / démo) →</span></a>
+          <a class="proof__item" href="#projets"><span class="proof__dot"></span><span>Ce portfolio statique, codé en HTML/CSS/JS et hébergé sur GitHub Pages →</span></a>
+        </div>
+        <h4>Réflexion personnelle</h4>
+        <blockquote class="reflect">[ Votre réflexion sur RT3 : apprentissages, difficultés (ex. logique algorithmique, web), progression, autonomie. Mentionnez que ce portfolio est lui-même une preuve concrète de RT3. ]</blockquote>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================ PROJETS / SAÉ ============================ -->
+<section class="section reveal" id="projets">
+  <div class="section__head"><span class="section__idx mono">03</span><h2 class="section__title">SAÉ &amp; Projets</h2></div>
+  <p class="section__intro">Les SAÉ sont les situations d'apprentissage et d'évaluation menées cette année — mes preuves concrètes. <em>Ajoutez une capture et 2–3 phrases par projet.</em></p>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card__img"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:#EDF0F5"><g stroke="#C7CEDB" stroke-width="2" fill="none"><line x1="0" y1="133" x2="640" y2="133"/><line x1="0" y1="266" x2="640" y2="266"/><line x1="213" y1="0" x2="213" y2="400"/><line x1="426" y1="0" x2="426" y2="400"/></g><circle cx="213" cy="200" r="13" fill="#1B4DFF"/><circle cx="426" cy="133" r="13" fill="#0E9B8E"/><circle cx="320" cy="300" r="13" fill="#E0660A"/><line x1="213" y1="200" x2="426" y2="133" stroke="#1B4DFF" stroke-width="2"/><text x="320" y="375" text-anchor="middle" font-family="monospace" font-size="17" fill="#9AA3B5">capture &#8594; ici</text></svg></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--rt1">RT1</span><span class="t t--rt2">RT2</span><span class="t t--rt3">RT3</span></div>
+        <h3 class="card__title">SAÉ2.04 — Projet intégratif de S2</h3>
+        <p class="card__desc">[ Projet transversal mobilisant les trois compétences. Décrivez le contexte, votre rôle, ce que vous avez produit et le résultat. ]</p>
+        <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/〔dépôt〕" target="_blank" rel="noopener">Code</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__img"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:#EDF0F5"><g stroke="#C7CEDB" stroke-width="2" fill="none"><line x1="0" y1="133" x2="640" y2="133"/><line x1="0" y1="266" x2="640" y2="266"/><line x1="213" y1="0" x2="213" y2="400"/><line x1="426" y1="0" x2="426" y2="400"/></g><circle cx="213" cy="200" r="13" fill="#1B4DFF"/><circle cx="426" cy="133" r="13" fill="#0E9B8E"/><circle cx="320" cy="300" r="13" fill="#E0660A"/><line x1="213" y1="200" x2="426" y2="133" stroke="#1B4DFF" stroke-width="2"/><text x="320" y="375" text-anchor="middle" font-family="monospace" font-size="17" fill="#9AA3B5">capture &#8594; ici</text></svg></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--rt1">RT1</span></div>
+        <h3 class="card__title">SAÉ2.01 — Réseau d'une petite structure</h3>
+        <p class="card__desc">[ Construction d'un réseau pour une petite structure : topologie, adressage, équipements, services. ]</p>
+        <div class="card__links mono"><a href="#">Détails</a><a href="#">Schéma</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__img"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:#EDF0F5"><g stroke="#C7CEDB" stroke-width="2" fill="none"><line x1="0" y1="133" x2="640" y2="133"/><line x1="0" y1="266" x2="640" y2="266"/><line x1="213" y1="0" x2="213" y2="400"/><line x1="426" y1="0" x2="426" y2="400"/></g><circle cx="213" cy="200" r="13" fill="#1B4DFF"/><circle cx="426" cy="133" r="13" fill="#0E9B8E"/><circle cx="320" cy="300" r="13" fill="#E0660A"/><line x1="213" y1="200" x2="426" y2="133" stroke="#1B4DFF" stroke-width="2"/><text x="320" y="375" text-anchor="middle" font-family="monospace" font-size="17" fill="#9AA3B5">capture &#8594; ici</text></svg></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--rt2">RT2</span></div>
+        <h3 class="card__title">SAÉ2.02 — Mesurer &amp; caractériser un signal</h3>
+        <p class="card__desc">[ Mesure et caractérisation d'un signal/système : protocole, instruments, résultats, interprétation. ]</p>
+        <div class="card__links mono"><a href="#">Détails</a><a href="#">Mesures</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__img"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:#EDF0F5"><g stroke="#C7CEDB" stroke-width="2" fill="none"><line x1="0" y1="133" x2="640" y2="133"/><line x1="0" y1="266" x2="640" y2="266"/><line x1="213" y1="0" x2="213" y2="400"/><line x1="426" y1="0" x2="426" y2="400"/></g><circle cx="213" cy="200" r="13" fill="#1B4DFF"/><circle cx="426" cy="133" r="13" fill="#0E9B8E"/><circle cx="320" cy="300" r="13" fill="#E0660A"/><line x1="213" y1="200" x2="426" y2="133" stroke="#1B4DFF" stroke-width="2"/><text x="320" y="375" text-anchor="middle" font-family="monospace" font-size="17" fill="#9AA3B5">capture &#8594; ici</text></svg></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--rt3">RT3</span></div>
+        <h3 class="card__title">SAÉ2.03 — Solution informatique entreprise</h3>
+        <p class="card__desc">[ Mise en place d'une solution informatique pour l'entreprise : besoin, conception, développement, livrable. ]</p>
+        <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/〔dépôt〕" target="_blank" rel="noopener">Code</a></div>
+      </div>
+    </article>
+
+    <!-- Optionnel : SAÉ de S1 — dupliquez/supprimez selon vos besoins -->
+    <article class="card">
+      <div class="card__img"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:#EDF0F5"><g stroke="#C7CEDB" stroke-width="2" fill="none"><line x1="0" y1="133" x2="640" y2="133"/><line x1="0" y1="266" x2="640" y2="266"/><line x1="213" y1="0" x2="213" y2="400"/><line x1="426" y1="0" x2="426" y2="400"/></g><circle cx="213" cy="200" r="13" fill="#1B4DFF"/><circle cx="426" cy="133" r="13" fill="#0E9B8E"/><circle cx="320" cy="300" r="13" fill="#E0660A"/><line x1="213" y1="200" x2="426" y2="133" stroke="#1B4DFF" stroke-width="2"/><text x="320" y="375" text-anchor="middle" font-family="monospace" font-size="17" fill="#9AA3B5">capture &#8594; ici</text></svg></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--rt1">RT1</span></div>
+        <h3 class="card__title">SAÉ1.01 — Hygiène informatique &amp; cybersécurité</h3>
+        <p class="card__desc">[ S1 — Sensibilisation à l'hygiène informatique et à la cybersécurité. ]</p>
+        <div class="card__links mono"><a href="#">Détails</a></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__img"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:#EDF0F5"><g stroke="#C7CEDB" stroke-width="2" fill="none"><line x1="0" y1="133" x2="640" y2="133"/><line x1="0" y1="266" x2="640" y2="266"/><line x1="213" y1="0" x2="213" y2="400"/><line x1="426" y1="0" x2="426" y2="400"/></g><circle cx="213" cy="200" r="13" fill="#1B4DFF"/><circle cx="426" cy="133" r="13" fill="#0E9B8E"/><circle cx="320" cy="300" r="13" fill="#E0660A"/><line x1="213" y1="200" x2="426" y2="133" stroke="#1B4DFF" stroke-width="2"/><text x="320" y="375" text-anchor="middle" font-family="monospace" font-size="17" fill="#9AA3B5">capture &#8594; ici</text></svg></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--rt3">RT3</span></div>
+        <h3 class="card__title">SAÉ1.05 — Traiter des données</h3>
+        <p class="card__desc">[ S1 — Traitement de données. ]</p>
+        <div class="card__links mono"><a href="#">Détails</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================ BILAN ============================ -->
+<section class="section reveal" id="bilan">
+  <div class="section__head"><span class="section__idx mono">04</span><h2 class="section__title">Bilan &amp; perspectives</h2></div>
+  <div class="bilan">
+    <p class="lead">Cette première année m'a permis de transformer des connaissances dispersées en compétences concrètes : je sais désormais concevoir et configurer un réseau, caractériser un signal et développer de petits outils logiciels. J'ai surtout gagné en autonomie et en méthode face à un problème technique.</p>
+    <p>Au-delà des cours, le CTF RhineTech à Mulhouse (12ᵉ sur 39 équipes) et mon stage de support informatique ont confirmé mon goût pour la cybersécurité et le travail en équipe sous contrainte. Je souhaite approfondir l'administration système, la sécurité et la virtualisation, et viser le parcours Cybersécurité en 2ᵉ année, idéalement en alternance.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ CONTACT / FOOTER ============================ -->
+<footer class="footer reveal" id="contact">
+  <div class="footer__cta">
+    <h2>Restons en contact</h2>
+    <p>Une question sur mon parcours ou mes SAÉ&nbsp;? Écrivez-moi.</p>
+    <a class="btn btn--solid" href="mailto:alshaqsihussain@gmail.com">alshaqsihussain@gmail.com</a>
+  </div>
+  <div class="footer__links mono">
+    <a href="https://github.com/〔pseudo〕" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/〔profil〕" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="assets/CV.pdf" target="_blank" rel="noopener">CV</a>
+  </div>
+  <div class="footer__base mono">© 2025–2026 Hussain AL SHAQSI · BUT Réseaux &amp; Télécommunications · Portfolio S2</div>
+</footer>
+
+<script>
+/* Portfolio BUT R&T — interactions légères (vanilla JS) */
+(function () {
+  "use strict";
+
+  /* --- Apparition au scroll --- */
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* --- Menu mobile --- */
+  var burger = document.querySelector(".nav__burger");
+  var links = document.querySelector(".nav__links");
+  if (burger && links) {
+    burger.addEventListener("click", function () {
+      var open = links.classList.toggle("open");
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    links.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        links.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
