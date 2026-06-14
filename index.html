@@ -6,23 +6,10 @@
 <title>Portfolio — Hussain AL SHAQSI · BUT Réseaux & Télécommunications</title>
 <meta name="description" content="E-portfolio S2 — BUT Réseaux & Télécommunications. Attestation des compétences RT1 Administrer, RT2 Connecter, RT3 Créer." />
 
-<!-- ============================================================
-     ⚙️  À REMPLACER  →  cherchez les symboles 〔 〕 (identité) et [ ] (vos textes)
-     · Les RESSOURCES et SAÉ ci-dessous sont VRAIES (tirées de votre relevé) — ne touchez qu'aux 〔 〕 et [ ].
-     · Les blocs « Réflexion personnelle » et « Profil/Bilan » sont à rédiger : c'est le cœur de la note.
-     · Images : déposez vos captures dans /assets puis remplacez les src.
-     ============================================================ -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-/* =============================================================
-   Portfolio BUT R&T — feuille de style
-   Direction : éditorial-corporate · papier clair · accents par compétence
-   Typo : Fraunces (titres) · IBM Plex Sans (texte) · IBM Plex Mono (méta)
-   ============================================================= */
-
 :root {
   --paper:      #F4F6F9;
   --paper-2:    #FFFFFF;
@@ -31,20 +18,16 @@
   --ink-faint:  #8A93A6;
   --line:       rgba(14, 23, 38, 0.10);
   --line-soft:  rgba(14, 23, 38, 0.06);
-
-  /* accent dominant + accents par compétence */
-  --accent:     #1B4DFF;   /* RT1 — Administrer */
+  --accent:     #1B4DFF;
   --rt1:        #1B4DFF;
-  --rt2:        #0E9B8E;   /* RT2 — Connecter   */
-  --rt3:        #E0660A;   /* RT3 — Créer       */
-
+  --rt2:        #0E9B8E;
+  --rt3:        #E0660A;
   --radius:     14px;
   --radius-sm:  9px;
   --shadow:     0 1px 2px rgba(14,23,38,.05), 0 12px 32px -12px rgba(14,23,38,.16);
   --shadow-lg:  0 24px 60px -20px rgba(14,23,38,.28);
   --maxw:       1080px;
   --ease:       cubic-bezier(.22, 1, .36, 1);
-
   --f-display:  "Fraunces", Georgia, serif;
   --f-body:     "IBM Plex Sans", system-ui, sans-serif;
   --f-mono:     "IBM Plex Mono", ui-monospace, monospace;
@@ -52,65 +35,33 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-
-body {
-  font-family: var(--f-body);
-  color: var(--ink);
-  background: var(--paper);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
+body { font-family: var(--f-body); color: var(--ink); background: var(--paper); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 .mono { font-family: var(--f-mono); letter-spacing: .02em; }
 
-/* ---- blueprint backdrop ---- */
-.bg-grid {
-  position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+.bg-grid { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
   background-size: 46px 46px;
   -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 100%);
-          mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 100%);
-}
+          mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 100%); }
 
 a { color: inherit; text-decoration: none; }
 
-/* =============================== NAV =============================== */
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px clamp(20px, 5vw, 56px);
-  background: rgba(244,246,249,.78);
-  backdrop-filter: saturate(180%) blur(14px);
-  border-bottom: 1px solid var(--line);
-}
+.nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between;
+  padding: 16px clamp(20px, 5vw, 56px); background: rgba(244,246,249,.78); backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid var(--line); }
 .nav__brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
-.nav__mark {
-  font-family: var(--f-mono); font-weight: 600; font-size: .82rem;
-  color: #fff; background: var(--ink); padding: 5px 8px; border-radius: 7px; letter-spacing: .05em;
-}
+.nav__mark { font-family: var(--f-mono); font-weight: 600; font-size: .82rem; color: #fff; background: var(--ink); padding: 5px 8px; border-radius: 7px; letter-spacing: .05em; }
 .nav__name { font-size: .98rem; letter-spacing: .01em; }
 .nav__links { display: flex; align-items: center; gap: 30px; }
 .nav__links a { font-size: .92rem; color: var(--ink-soft); position: relative; transition: color .2s; }
-.nav__links a:not(.nav__cta)::after {
-  content: ""; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px;
-  background: var(--accent); transition: width .25s var(--ease);
-}
+.nav__links a:not(.nav__cta)::after { content: ""; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background: var(--accent); transition: width .25s var(--ease); }
 .nav__links a:hover { color: var(--ink); }
 .nav__links a:hover::after { width: 100%; }
-.nav__cta {
-  background: var(--ink); color: #fff !important; padding: 8px 16px; border-radius: 8px;
-  font-weight: 500; transition: transform .2s, background .2s;
-}
+.nav__cta { background: var(--ink); color: #fff !important; padding: 8px 16px; border-radius: 8px; font-weight: 500; transition: transform .2s, background .2s; }
 .nav__cta:hover { background: var(--accent); transform: translateY(-1px); }
 .nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; }
 .nav__burger span { width: 24px; height: 2px; background: var(--ink); transition: .3s; }
 
-/* =============================== LAYOUT =============================== */
 main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
-
 .section { padding: clamp(64px, 9vw, 120px) 0; border-top: 1px solid var(--line); }
 .section__head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 40px; }
 .section__idx { font-size: .9rem; color: var(--accent); font-weight: 600; }
@@ -118,39 +69,26 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 .section__intro { max-width: 60ch; color: var(--ink-soft); font-size: 1.06rem; margin-bottom: 48px; }
 .section__intro em, .comp__col em { font-style: normal; color: var(--ink); font-weight: 600; }
 
-/* =============================== HERO =============================== */
 .hero { padding: clamp(70px, 12vw, 150px) 0 clamp(50px, 7vw, 90px); }
 .hero__meta { font-size: .82rem; color: var(--accent); font-weight: 600; margin-bottom: 26px; }
-.hero__title {
-  font-family: var(--f-display); font-weight: 600;
-  font-size: clamp(2.8rem, 9vw, 6rem); line-height: .98; letter-spacing: -.035em; margin-bottom: 30px;
-}
+.hero__title { font-family: var(--f-display); font-weight: 600; font-size: clamp(2.8rem, 9vw, 6rem); line-height: .98; letter-spacing: -.035em; margin-bottom: 30px; }
 .hero__pre { display: block; font-size: clamp(1rem, 2.4vw, 1.4rem); font-weight: 400; font-style: italic; color: var(--ink-soft); letter-spacing: 0; margin-bottom: 6px; }
 .hero__last { color: var(--accent); }
 .hero__lede { max-width: 56ch; font-size: clamp(1.05rem, 2vw, 1.22rem); color: var(--ink-soft); }
 .hero__lede strong { color: var(--ink); font-weight: 600; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 36px 0 30px; }
 .hero__chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
-.hero__chips li {
-  font-size: .8rem; padding: 7px 13px; border: 1px solid var(--line);
-  border-radius: 999px; background: var(--paper-2); color: var(--ink-soft);
-}
+.hero__chips li { font-size: .8rem; padding: 7px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-2); color: var(--ink-soft); }
 .hero__chips li:nth-child(1) { border-color: color-mix(in srgb, var(--rt1) 35%, var(--line)); }
 .hero__chips li:nth-child(2) { border-color: color-mix(in srgb, var(--rt2) 35%, var(--line)); }
 .hero__chips li:nth-child(3) { border-color: color-mix(in srgb, var(--rt3) 35%, var(--line)); }
 
-/* =============================== BUTTONS =============================== */
-.btn {
-  display: inline-flex; align-items: center; gap: 8px; font-size: .94rem; font-weight: 500;
-  padding: 11px 20px; border-radius: 10px; border: 1px solid transparent; cursor: pointer;
-  transition: transform .2s var(--ease), background .2s, border-color .2s, box-shadow .2s;
-}
+.btn { display: inline-flex; align-items: center; gap: 8px; font-size: .94rem; font-weight: 500; padding: 11px 20px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; transition: transform .2s var(--ease), background .2s, border-color .2s, box-shadow .2s; }
 .btn--solid { background: var(--ink); color: #fff; }
 .btn--solid:hover { background: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
 .btn--ghost { background: var(--paper-2); border-color: var(--line); color: var(--ink); }
 .btn--ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
 
-/* =============================== PROFIL =============================== */
 .profil { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
 .profil__photo { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); background: var(--paper-2); }
 .profil__photo img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
@@ -160,21 +98,13 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 .profil__facts div { display: flex; flex-direction: column; gap: 4px; font-size: .98rem; }
 .profil__facts span { font-size: .74rem; text-transform: uppercase; color: var(--ink-faint); letter-spacing: .08em; }
 
-/* =============================== COMPÉTENCES =============================== */
-.comp {
-  background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: clamp(24px, 4vw, 40px); margin-bottom: 26px; box-shadow: var(--shadow);
-  position: relative; overflow: hidden; --c: var(--accent);
-}
+.comp { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 4vw, 40px); margin-bottom: 26px; box-shadow: var(--shadow); position: relative; overflow: hidden; --c: var(--accent); }
 .comp::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
 .comp--rt1 { --c: var(--rt1); }
 .comp--rt2 { --c: var(--rt2); }
 .comp--rt3 { --c: var(--rt3); }
 .comp__head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 28px; }
-.comp__code {
-  font-size: .85rem; font-weight: 600; color: #fff; background: var(--c);
-  padding: 5px 11px; border-radius: 7px; letter-spacing: .06em;
-}
+.comp__code { font-size: .85rem; font-weight: 600; color: #fff; background: var(--c); padding: 5px 11px; border-radius: 7px; letter-spacing: .06em; }
 .comp__title { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.8rem); letter-spacing: -.015em; flex: 1 1 280px; }
 .comp__tag { width: 100%; font-size: .78rem; color: var(--ink-faint); }
 .comp__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); }
@@ -183,45 +113,22 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 
 .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
 .ticks li { position: relative; padding-left: 24px; color: var(--ink-soft); font-size: .98rem; }
-.ticks li::before {
-  content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px;
-  border-radius: 2px; background: var(--c); transform: rotate(45deg);
-}
+.ticks li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; border-radius: 2px; background: var(--c); transform: rotate(45deg); }
 
-.reslist {
-  font-size: .8rem; line-height: 1.7; color: var(--ink-faint);
-  background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--c);
-  border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 4px;
-}
+.reslist { font-size: .8rem; line-height: 1.7; color: var(--ink-faint); background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 4px; }
 .proof { display: flex; flex-direction: column; gap: 8px; }
-.proof__item {
-  display: flex; align-items: center; gap: 11px; padding: 12px 14px;
-  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm);
-  font-size: .92rem; color: var(--ink-soft); transition: border-color .2s, transform .2s, color .2s;
-}
+.proof__item { display: flex; align-items: center; gap: 11px; padding: 12px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: .92rem; color: var(--ink-soft); transition: border-color .2s, transform .2s, color .2s; }
 .proof__item:hover { border-color: var(--c); color: var(--ink); transform: translateX(3px); }
 .proof__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex-shrink: 0; }
 
-.reflect {
-  border-left: 3px solid var(--c); padding: 4px 0 4px 18px; margin-top: 4px;
-  font-family: var(--f-display); font-size: 1.05rem; font-style: italic;
-  color: var(--ink-soft); line-height: 1.6;
-}
+.reflect { border-left: 3px solid var(--c); padding: 4px 0 4px 18px; margin-top: 4px; font-family: var(--f-display); font-size: 1.05rem; font-style: italic; color: var(--ink-soft); line-height: 1.6; }
 
-/* =============================== PROJETS =============================== */
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
-.card {
-  background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden; box-shadow: var(--shadow); transition: transform .3s var(--ease), box-shadow .3s;
-  display: flex; flex-direction: column;
-}
+.card { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .3s var(--ease), box-shadow .3s; display: flex; flex-direction: column; }
 .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 .card { scroll-margin-top: 104px; }
 .card:target { box-shadow: 0 0 0 2px var(--accent), var(--shadow-lg); }
-.card__img { position: relative; aspect-ratio: 16/10; overflow: hidden; border-bottom: 1px solid var(--line);
-  background-color: #EDF0F5;
-  background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 32px 32px; }
+.card__img { position: relative; aspect-ratio: 16/10; overflow: hidden; border-bottom: 1px solid var(--line); background-color: #EDF0F5; background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px); background-size: 32px 32px; }
 .card__img::before { content: "capture → ici"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--ink-faint); font-family: var(--f-mono); font-size: .8rem; }
 .card__img img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease); }
 .card:hover .card__img img { transform: scale(1.05); }
@@ -235,12 +142,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 .card__links a { color: var(--accent); font-weight: 600; transition: opacity .2s; }
 .card__links a:hover { opacity: .65; }
 
-/* =============================== BILAN =============================== */
 .bilan { max-width: 64ch; }
 .bilan .lead { font-size: 1.3rem; font-family: var(--f-display); line-height: 1.5; margin-bottom: 20px; }
 .bilan p { color: var(--ink-soft); }
 
-/* =============================== FOOTER =============================== */
 .footer { border-top: 1px solid var(--line); margin-top: 40px; padding: clamp(60px, 9vw, 110px) clamp(20px, 5vw, 40px) 50px; text-align: center; }
 .footer__cta h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -.02em; margin-bottom: 12px; }
 .footer__cta p { color: var(--ink-soft); margin-bottom: 26px; }
@@ -249,25 +154,13 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 .footer__links a:hover { color: var(--accent); }
 .footer__base { font-size: .78rem; color: var(--ink-faint); }
 
-/* =============================== REVEAL ANIM =============================== */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
-  html { scroll-behavior: auto; }
-}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
 
-/* =============================== RESPONSIVE =============================== */
-@media (max-width: 860px) {
-  .profil { grid-template-columns: 1fr; }
-  .profil__photo { max-width: 220px; }
-  .comp__grid { grid-template-columns: 1fr; gap: 8px; }
-}
+@media (max-width: 860px) { .profil { grid-template-columns: 1fr; } .profil__photo { max-width: 220px; } .comp__grid { grid-template-columns: 1fr; gap: 8px; } }
 @media (max-width: 680px) {
-  .nav__links { position: fixed; inset: 64px 0 auto; flex-direction: column; gap: 0;
-    background: var(--paper-2); border-bottom: 1px solid var(--line); padding: 8px 0;
-    transform: translateY(-130%); transition: transform .35s var(--ease); }
+  .nav__links { position: fixed; inset: 64px 0 auto; flex-direction: column; gap: 0; background: var(--paper-2); border-bottom: 1px solid var(--line); padding: 8px 0; transform: translateY(-130%); transition: transform .35s var(--ease); }
   .nav__links.open { transform: none; }
   .nav__links a { padding: 14px 28px; width: 100%; }
   .nav__links a:not(.nav__cta)::after { display: none; }
@@ -276,13 +169,54 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
   .profil__facts { grid-template-columns: 1fr; }
 }
 
+/* ===================== MODAL DÉTAILS (ajout) ===================== */
+.modal { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; }
+.modal.open { display: flex; }
+.modal__backdrop { position: absolute; inset: 0; background: rgba(14,23,38,.55); backdrop-filter: blur(4px); opacity: 0; transition: opacity .3s var(--ease); }
+.modal.open .modal__backdrop { opacity: 1; }
+.modal__panel { position: relative; z-index: 1; width: min(980px, 100%); max-height: 86vh;
+  display: grid; grid-template-columns: minmax(0, 46%) 1fr;
+  background: var(--paper-2); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg);
+  transform: translateY(16px) scale(.985); opacity: 0; transition: transform .35s var(--ease), opacity .35s var(--ease); --c: var(--accent); }
+.modal.open .modal__panel { transform: none; opacity: 1; }
+.modal__panel.is-rt1 { --c: var(--rt1); }
+.modal__panel.is-rt2 { --c: var(--rt2); }
+.modal__panel.is-rt3 { --c: var(--rt3); }
+.modal__panel::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); z-index: 3; }
+.modal__close { position: absolute; top: 14px; right: 14px; z-index: 4; width: 38px; height: 38px; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,.92); color: var(--ink); font-size: 1.3rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow); transition: transform .25s var(--ease), background .2s; }
+.modal__close:hover { transform: rotate(90deg); background: #fff; }
+.modal__media { background-color: #EDF0F5; border-right: 1px solid var(--line); overflow: hidden;
+  display: flex; align-items: center; justify-content: center; padding: 22px;
+  background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px); background-size: 28px 28px; }
+.modal__media img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: var(--shadow); }
+.modal__media.is-empty::before { content: "capture → ici"; color: var(--ink-faint); font-family: var(--f-mono); font-size: .8rem; }
+.modal__body { padding: clamp(28px, 3.5vw, 44px); overflow-y: auto; max-height: 86vh; display: flex; flex-direction: column; }
+.modal__tags { display: flex; gap: 6px; margin-bottom: 14px; }
+.modal__title { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.1; letter-spacing: -.015em; margin-bottom: 18px; }
+.modal__content { color: var(--ink-soft); font-size: 1rem; line-height: 1.75; }
+.modal__content h5 { font-size: .76rem; text-transform: uppercase; letter-spacing: .1em; color: var(--c); margin: 22px 0 8px; }
+.modal__content p { margin-bottom: 12px; }
+.modal__content ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.modal__content li { position: relative; padding-left: 22px; }
+.modal__content li::before { content: ""; position: absolute; left: 2px; top: .6em; width: 7px; height: 7px; border-radius: 2px; background: var(--c); transform: rotate(45deg); }
+.modal__links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); font-size: .9rem; }
+.modal__links a { color: var(--accent); font-weight: 600; transition: opacity .2s; }
+.modal__links a:hover { opacity: .65; }
+.card__more { display: none; }
+body.modal-open { overflow: hidden; }
+@media (max-width: 720px) {
+  .modal__panel { grid-template-columns: 1fr; max-height: 90vh; }
+  .modal__media { aspect-ratio: 16/10; border-right: 0; border-bottom: 1px solid var(--line); }
+  .modal__body { max-height: none; }
+}
 </style>
 </head>
 <body>
 
 <div class="bg-grid" aria-hidden="true"></div>
 
-<!-- ============================ NAV ============================ -->
 <header class="nav" id="top">
   <a class="nav__brand" href="#top">
     <span class="nav__mark">RT</span>
@@ -300,7 +234,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 
 <main>
 
-<!-- ============================ HERO ============================ -->
 <section class="hero reveal" id="hero">
   <div class="hero__meta mono">E-PORTFOLIO · SEMESTRE 2 · 2025–2026</div>
   <h1 class="hero__title">
@@ -325,11 +258,9 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
   </ul>
 </section>
 
-<!-- ============================ PROFIL ============================ -->
 <section class="section reveal" id="profil">
   <div class="section__head"><span class="section__idx mono">01</span><h2 class="section__title">Profil</h2></div>
   <div class="profil">
-    <!-- Votre photo : fichier cvpfp.png à côté du index.html (ou changez le nom ici) -->
     <figure class="profil__photo"><img src="cvpfp.png" alt="Hussain AL SHAQSI" /></figure>
     <div class="profil__text">
       <p class="lead">Étudiant en BUT Réseaux &amp; Télécommunications à l'IUT de Colmar, je suis passionné par les réseaux, les systèmes et la cybersécurité. Mon parcours international de l'International School of Oman jusqu'aux IUT français m'a appris à m'adapter et à apprendre vite, en arabe, en anglais (C2) et en français.</p>
@@ -344,7 +275,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
   </div>
 </section>
 
-<!-- ============================ COMPÉTENCES ============================ -->
 <section class="section reveal" id="competences">
   <div class="section__head"><span class="section__idx mono">02</span><h2 class="section__title">Les trois compétences</h2></div>
   <p class="section__intro">
@@ -353,7 +283,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
     les <em>ressources</em> mobilisées, les <em>preuves</em> et une <em>réflexion personnelle</em>.
   </p>
 
-  <!-- ----------- RT1 ----------- -->
   <article class="comp comp--rt1">
     <header class="comp__head">
       <span class="comp__code mono">RT1</span>
@@ -389,7 +318,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
     </div>
   </article>
 
-  <!-- ----------- RT2 ----------- -->
   <article class="comp comp--rt2">
     <header class="comp__head">
       <span class="comp__code mono">RT2</span>
@@ -425,7 +353,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
     </div>
   </article>
 
-  <!-- ----------- RT3 ----------- -->
   <article class="comp comp--rt3">
     <header class="comp__head">
       <span class="comp__code mono">RT3</span>
@@ -455,7 +382,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
           <a class="proof__item" href="#sae2-03"><span class="proof__dot"></span><span>SAÉ2.03 — Solution informatique entreprise →</span></a>
           <a class="proof__item" href="#sae1-04"><span class="proof__dot"></span><span>SAÉ1.04 — Se présenter sur Internet →</span></a>
           <a class="proof__item" href="#sae1-05"><span class="proof__dot"></span><span>SAÉ1.05 — Traiter des données →</span></a>
-          <a class="proof__item" href="#sae2-05"><span class="proof__dot"></span><span>SAÉ2.05 — Ce portfolio →</span></a>
+          <a class="proof__item" href="#top"><span class="proof__dot"></span><span>SAÉ2.05 — Ce portfolio →</span></a>
         </div>
         <h4>Réflexion personnelle</h4>
         <blockquote class="reflect">Ce bloc m'a permis de consolider et de mettre en pratique les bases de programmation acquises lors de mon cursus universitaire précédent à Strasbourg. J'ai pu gagner en efficacité, notamment en apprenant à concevoir des scripts Python et en découvrant le framework Django pour le développement web. J'ai également maîtrisé les différentes étapes de création d'un site, de l'hébergement local à la mise en ligne via GitHub, un savoir-faire dont ce portfolio est d'ailleurs l'aboutissement direct.</blockquote>
@@ -464,28 +391,14 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
   </article>
 </section>
 
-<!-- ============================ PROJETS / SAÉ ============================ -->
 <section class="section reveal" id="projets">
   <div class="section__head"><span class="section__idx mono">03</span><h2 class="section__title">SAÉ &amp; Projets</h2></div>
   <p class="section__intro">Les SAÉ sont les situations d'apprentissage et d'évaluation menées cette année — mes preuves concrètes.</p>
 
-  <!-- POUR AJOUTER UNE PHOTO : nommez votre capture comme le fichier indiqué dans src="..."
-       et placez-la à côté du index.html. Tant qu'elle n'existe pas, un cadre « capture → ici » s'affiche. -->
   <div class="cards">
 
-    <!-- ===================== SEMESTRE 2 ===================== -->
-    <article class="card" id="sae2-04">
-      <div class="card__img"><img src="sae2-04.png" alt="SAÉ2.04 — Projet intégratif de S2" onerror="this.remove()"></div>
-      <div class="card__body">
-        <div class="card__tags mono"><span class="t t--rt1">RT1</span><span class="t t--rt2">RT2</span><span class="t t--rt3">RT3</span></div>
-        <h3 class="card__title">SAÉ2.04 — Projet intégratif de S2</h3>
-        <p class="card__desc">Projet intégratif de fin de semestre mobilisant les trois compétences : conception réseau, transmission et développement d'un outil logiciel, mené en équipe.</p>
-        <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/hussainshaqsi" target="_blank" rel="noopener">Code</a></div>
-      </div>
-    </article>
-
     <article class="card" id="sae2-01">
-      <div class="card__img"><img src="" alt="SAÉ2.01 — Réseau d'une petite structure" onerror="this.remove()"></div>
+      <div class="card__img"><img src="gns3.png" alt="SAÉ2.01 — Réseau d'une petite structure" onerror="this.remove()"></div>
       <div class="card__body">
         <div class="card__tags mono"><span class="t t--rt1">RT1</span></div>
         <h3 class="card__title">SAÉ2.01 — Réseau d'une petite structure</h3>
@@ -514,8 +427,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
       </div>
     </article>
 
-
-    <!-- ===================== SEMESTRE 1 ===================== -->
     <article class="card" id="sae1-01">
       <div class="card__img"><img src="Sensibilisation.png" alt="SAÉ1.01 — Hygiène informatique et cybersécurité" onerror="this.remove()"></div>
       <div class="card__body">
@@ -568,18 +479,16 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
   </div>
 </section>
 
-<!-- ============================ BILAN ============================ -->
 <section class="section reveal" id="bilan">
   <div class="section__head"><span class="section__idx mono">04</span><h2 class="section__title">Bilan &amp; perspectives</h2></div>
   <div class="bilan">
     <p class="lead">Cette première année m'a permis de transformer des connaissances dispersées en compétences concrètes : je sais désormais concevoir et configurer un réseau, caractériser un signal et développer de petits outils logiciels. J'ai surtout gagné en autonomie et en méthode face à un problème technique.</p>
-    <p>Au-delà des cours, le CTF RhineTech à Mulhouse (12ᵉ sur 39 équipes) et mon stage de support informatique ont confirmé mon goût pour la cybersécurité et le travail en équipe sous contrainte. Je souhaite approfondir l'administration système, la sécurité et la virtualisation, et viser le parcours Cybersécurité en 2ᵉ année, idéalement en alternance.</p>
+    <p>Au-delà des cours, le CTF RhineTech à Mulhouse (12ᵉ sur 39 équipes) et mon stage de support informatique ont confirmé mon goût pour la cybersécurité et le travail en équipe sous contrainte. Je souhaite approfondir l'administration système, la sécurité et la virtualisation, et viser le parcours Devcloud en 2ᵉ année, idéalement en alternance.</p>
   </div>
 </section>
 
 </main>
 
-<!-- ============================ CONTACT / FOOTER ============================ -->
 <footer class="footer reveal" id="contact">
   <div class="footer__cta">
     <h2>Restons en contact</h2>
@@ -595,11 +504,8 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 </footer>
 
 <script>
-/* Portfolio BUT R&T — interactions légères (vanilla JS) */
 (function () {
   "use strict";
-
-  /* --- Apparition au scroll --- */
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -611,8 +517,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
-
-  /* --- Menu mobile --- */
   var burger = document.querySelector(".nav__burger");
   var links = document.querySelector(".nav__links");
   if (burger && links) {
@@ -628,7 +532,79 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
     });
   }
 })();
-
 </script>
+
+<!-- ============================ MODAL DÉTAILS (ajout) ============================ -->
+<div class="modal" id="detailsModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel">
+    <button class="modal__close" aria-label="Fermer" data-close>×</button>
+    <div class="modal__media" id="modalImg"></div>
+    <div class="modal__body">
+      <div class="modal__tags" id="modalTags"></div>
+      <h3 class="modal__title" id="modalTitle"></h3>
+      <div class="modal__content" id="modalContent"></div>
+      <div class="modal__links" id="modalLinks"></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var modal = document.getElementById('detailsModal');
+  if(!modal) return;
+  var mImg = document.getElementById('modalImg'),
+      mTags = document.getElementById('modalTags'),
+      mTitle = document.getElementById('modalTitle'),
+      mContent = document.getElementById('modalContent'),
+      mLinks = document.getElementById('modalLinks'),
+      panel = modal.querySelector('.modal__panel');
+  var triggers = ['Détails','Schéma','Mesures'];
+
+  function openModal(card){
+    var title = card.querySelector('.card__title');
+    var img   = card.querySelector('.card__img img');
+    var tags  = card.querySelector('.card__tags');
+    var more  = card.querySelector('.card__more');
+    var desc  = card.querySelector('.card__desc');
+
+    mTitle.textContent = title ? title.textContent : '';
+    mTags.innerHTML = tags ? tags.innerHTML : '';
+
+    mImg.innerHTML = '';
+    if (img){ var c = img.cloneNode(true); c.removeAttribute('onerror'); mImg.appendChild(c); mImg.classList.remove('is-empty'); }
+    else { mImg.classList.add('is-empty'); }
+
+    mContent.innerHTML = more ? more.innerHTML : (desc ? '<p>'+desc.innerHTML+'</p>' : '');
+
+    mLinks.innerHTML = '';
+    card.querySelectorAll('.card__links a').forEach(function(a){
+      if (triggers.indexOf(a.textContent.trim()) === -1){ mLinks.appendChild(a.cloneNode(true)); }
+    });
+    mLinks.style.display = mLinks.children.length ? '' : 'none';
+
+    panel.className = 'modal__panel';
+    var t = card.querySelector('.t');
+    if (t){ panel.classList.add(t.classList.contains('t--rt1') ? 'is-rt1' : t.classList.contains('t--rt2') ? 'is-rt2' : 'is-rt3'); }
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.card__links a').forEach(function(a){
+    if (triggers.indexOf(a.textContent.trim()) !== -1){
+      a.addEventListener('click', function(e){ e.preventDefault(); var card = a.closest('.card'); if(card) openModal(card); });
+    }
+  });
+  modal.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click', closeModal); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+})();
+</script>
+
 </body>
 </html>
