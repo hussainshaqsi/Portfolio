@@ -393,7 +393,7 @@ body.modal-open { overflow: hidden; }
 
 <section class="section reveal" id="projets">
   <div class="section__head"><span class="section__idx mono">03</span><h2 class="section__title">SAÉ &amp; Projets</h2></div>
-  <p class="section__intro">Les SAÉ sont les situations d'apprentissage et d'évaluation menées cette année — mes preuves concrètes. Cliquez sur « Détails » pour le sujet complet et ce que j'ai réalisé.</p>
+  <p class="section__intro">Les SAÉ sont les situations d'apprentissage et d'évaluation menées cette année mes preuves concrètes. Cliquez sur « Détails » pour le sujet complet et ce que j'ai réalisé.</p>
 
   <div class="cards">
 
@@ -415,7 +415,7 @@ body.modal-open { overflow: hidden; }
           <h5>Outils</h5>
           <p>EVE-NG, GNS3, Cisco IOS, Wireshark.</p>
         </div>
-        <div class="card__links mono"><a href="#">Détails</a><a href="#">Schéma</a></div>
+        <div class="card__links mono"><a href="#">Détails</a></div>
       </div>
     </article>
 
@@ -439,39 +439,30 @@ body.modal-open { overflow: hidden; }
           <h5>Outils</h5>
           <p>ESP32, codec VS1053, Arduino IDE, SPI, Wi-Fi / WiFiManager, MQTT.</p>
         </div>
-        <div class="card__links mono"><a href="#">Détails</a><a href="#">Mesures</a></div>
+        <div class="card__links mono"><a href="#">Détails</a></div>
       </div>
     </article>
-
-    <article class="card" id="sae2-03">
-      <div class="card__img"><img src="Gestionnotes.png" alt="SAÉ2.03 — Gestionnaire de notes" onerror="this.remove()"></div>
-      <div class="card__body">
-        <div class="card__tags mono"><span class="t t--rt3">RT3</span></div>
-        <h3 class="card__title">SAÉ2.03 — Solution informatique entreprise</h3>
-        <p class="card__desc">Interface web de gestion des notes des étudiants : modèle de données (étudiants, UE, ressources, enseignants, examens, notes), CRUD complet et génération d'un relevé.</p>
-        <div class="card__more">
-          <p>Fournir à une entreprise (ici un département de formation) une interface web de gestion des notes des étudiants, avec une base de données complète et les opérations associées.</p>
-          <h5>Modèle de données</h5>
-          <ul>
-            <li>Étudiants (n° étudiant, nom, prénom, groupe, photo, email)</li>
-            <li>Unités d'enseignement (code, nom, semestre, crédits ECTS)</li>
-            <li>Ressources rattachées à une UE (code, nom, descriptif, coefficient)</li>
-            <li>Enseignants, examens (titre, date, coefficient) et notes (examen, étudiant, note, appréciation)</li>
-          </ul>
-          <h5>Ce que j'ai réalisé</h5>
-          <ul>
-            <li>Conception et remplissage de la base (étudiants, enseignants, notes)</li>
-            <li>CRUD complet pour chaque type de données</li>
-            <li>Saisie des notes d'un examen au clavier ou par import d'un fichier (structure documentée)</li>
-            <li>Génération d'un relevé de notes simple pour un étudiant</li>
-          </ul>
-          <h5>Outils</h5>
-          <p>Python / Django, base de données, technologies web (HTML/CSS).</p>
-        </div>
-        <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/hussainshaqsi" target="_blank" rel="noopener">Code</a></div>
-      </div>
-    </article>
-
+<article class="card" id="sae2-03">
+  <div class="card__img"><img src="Gestionnotes.png" alt="SAÉ2.03 — Gestionnaire de notes" onerror="this.remove()"></div>
+  <div class="card__body">
+    <div class="card__tags mono"><span class="t t--rt3">RT3</span></div>
+    <h3 class="card__title">SAÉ2.03 — Solution informatique entreprise</h3>
+    <p class="card__desc">Application web de gestion de notes (Django + MySQL) déployée en équipe. Ma partie : le serveur de production (Nginx, Gunicorn, systemd) et l'interface.</p>
+    <div class="card__more">
+      <p>Projet d'équipe : développer et déployer une application web de gestion de notes (Django + MySQL) pour un IUT, avec le service web et la base de données séparés sur deux machines. Ma partie : le déploiement du serveur web et l'interface.</p>
+      <h5>Ma contribution</h5>
+      <ul>
+        <li>Serveur de production sous Debian : Nginx (reverse proxy) devant Gunicorn (WSGI) exécutant Django, configuré en service systemd (démarrage et redémarrage automatiques)</li>
+        <li>Sécurité &amp; fiabilité : utilisateur dédié (pas de root),mode debug désactivé, connexion à la base MySQL distante (settings.py)</li>
+        <li>Refonte de l'interface (CSS) et tableau de bord avec indicateurs cliquables</li>
+        <li>Travail en équipe via Git (branche dédiée, fusion, résolution de conflits) et script start.sh pour lancer les services en une commande</li>
+      </ul>
+      <h5>Outils</h5>
+      <p>Debian, Nginx, Gunicorn, Django, MySQL, systemd,Git, VirtualBox.</p>
+    </div>
+    <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/ilkan682/SAE-Gestion-Notes" target="_blank" rel="noopener">Code</a></div>
+  </div>
+</article>
     <article class="card" id="sae1-01">
       <div class="card__img"><img src="Sensibilisation.png" alt="SAÉ1.01 — Hygiène informatique et cybersécurité" onerror="this.remove()"></div>
       <div class="card__body">
@@ -487,7 +478,7 @@ body.modal-open { overflow: hidden; }
             <li>Sauvegarde et protection des données</li>
           </ul>
         </div>
-        <div class="card__links mono"><a href="#">Détails</a></div>
+        <div class="card__links mono"><a href="#">Détails</a><a href="ppt/Ingenierie.pdf" target="_blank" rel="noopener">Présentation</a></div>
       </div>
     </article>
 
@@ -531,7 +522,7 @@ body.modal-open { overflow: hidden; }
             <li>Observation de l'effet du support sur le signal transmis</li>
           </ul>
         </div>
-        <div class="card__links mono"><a href="#">Détails</a></div>
+        <div class="card__links mono"><a href="#">Détails</a><a href="ppt/heatmap.pdf" target="_blank" rel="noopener">Présentation</a></div>
       </div>
     </article>
 
@@ -579,7 +570,7 @@ body.modal-open { overflow: hidden; }
           <h5>Outils</h5>
           <p>Python (pathlib, json, PyQt5 / PyQtChart), PowerShell, PyCharm.</p>
         </div>
-        <div class="card__links mono"><a href="#">Détails</a></div>
+        <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/hussainshaqsi/SAe-1.05" target="_blank" rel="noopener">Code</a></div>
       </div>
     </article>
   </div>
