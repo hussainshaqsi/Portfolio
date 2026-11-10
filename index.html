@@ -151,10 +151,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 .card__body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
 .card__tags { display: flex; gap: 6px; margin-bottom: 10px; }
 .t { font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 6px; color: #fff; }
+.t--perso { background: var(--ink); }
 .t--rt1 { background: var(--rt1); } .t--rt2 { background: var(--rt2); } .t--rt3 { background: var(--rt3); }
 .card__title { font-family: var(--f-display); font-weight: 500; font-size: 1.22rem; margin-bottom: 8px; letter-spacing: -.01em; }
 .card__desc { color: var(--ink-soft); font-size: .94rem; flex: 1; }
-.card__links { display: flex; gap: 16px; margin-top: 16px; font-size: .84rem; }
+.card__links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; font-size: .84rem; }
 .card__links a { color: var(--accent); font-weight: 600; transition: opacity .2s; }
 .card__links a:hover { opacity: .65; }
 
@@ -300,7 +301,7 @@ body.modal-open { overflow: hidden; }
 
 <section class="section reveal" id="savoir-faire">
   <div class="section__head"><span class="section__idx mono">02</span><h2 class="section__title">Savoir-faire</h2></div>
-  <p class="section__intro">Les outils et technologies que j'ai déjà mis en œuvre en cours, en SAÉ ou en projet.</p>
+  <p class="section__intro">Les outils et technologies que j'ai déjà mis en œuvre en cours, en SAÉ ou dans mes projets personnels, tous publics sur GitHub.</p>
 
   <div class="skills">
     <div class="skill skill--rt1">
@@ -339,24 +340,69 @@ body.modal-open { overflow: hidden; }
     </div>
   </div>
 
-  <h3 class="subhead mono">Projets récents</h3>
+  <h3 class="subhead mono">Projets personnels · DevCloud</h3>
+  <div class="cards">
+    <article class="card" id="projet-cicd">
+      <div class="card__img"><img src="cicd.svg" alt="Pipeline CI/CD Django : GitLab, runner, Docker Compose, k3s, Traefik, Prometheus et Grafana" onerror="this.remove()"></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--perso">Projet perso</span></div>
+        <h3 class="card__title">Pipeline CI/CD Django</h3>
+        <p class="card__desc">Une application Django déployée de deux façons (Docker Compose et Kubernetes k3s avec un chart Helm que j'ai écrit) derrière Traefik en HTTPS, livrée automatiquement par GitLab CI/CD et supervisée par Prometheus et Grafana. Sur une VM Oracle Cloud gratuite.</p>
+        <div class="card__more">
+          <p>Comprendre de bout en bout comment une application passe du code sur mon PC à un système en production : conteneurs, routage HTTPS, intégration et déploiement continus, orchestration et supervision. Chaque brique a été montée et configurée à la main.</p>
+          <h5>Ce que j'ai réalisé</h5>
+          <ul>
+            <li>VM Ubuntu sur Oracle Cloud (ARM, 1 OCPU / 6 Go), deux pare-feux (Security List Oracle et iptables) ouverts seulement sur 22, 80 et 443</li>
+            <li>Deux déploiements de la même application : Docker Compose, et k3s avec mon propre chart Helm (Deployment, Service, PVC, Ingress)</li>
+            <li>Un seul reverse proxy Traefik pour les deux, avec certificats Let's Encrypt automatiques</li>
+            <li>Pipeline GitLab CI (test, deploy, deploy-k3s) exécuté par un runner auto-hébergé sur la VM, à chaque push sur main</li>
+            <li>Secret Django jamais dans le code : variables CI/CD masquées, injectées en .env (Docker) et en Secret (Kubernetes)</li>
+            <li>Prometheus + Grafana, avec une règle d'alerte sur les redémarrages de pods inattendus</li>
+            <li>Problèmes diagnostiqués : règles de pare-feu en conflit, résolution DNS interne au cluster, health checks mal calibrés</li>
+          </ul>
+          <h5>Outils</h5>
+          <p>Django, Docker, k3s, Helm, Traefik, Let's Encrypt, GitLab CI/CD, Prometheus, Grafana, Oracle Cloud, DuckDNS.</p>
+        </div>
+        <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/hussainshaqsi/django-cicd-pipeline" target="_blank" rel="noopener">Code</a><a href="https://hussain-app.duckdns.org" target="_blank" rel="noopener">Démo Docker</a><a href="https://hussain-k3s.duckdns.org" target="_blank" rel="noopener">Démo k3s</a></div>
+      </div>
+    </article>
+
+    <article class="card" id="projet-oci">
+      <div class="card__img"><img src="oci-vpn.svg" alt="Réseau cloud privé : bastion WireGuard et serveur sans IP publique" onerror="this.remove()"></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--perso">Projet perso</span></div>
+        <h3 class="card__title">Réseau cloud privé et VPN WireGuard</h3>
+        <p class="card__desc">Un serveur sans IP publique, injoignable depuis Internet, accessible uniquement par un tunnel WireGuard via un bastion. Infrastructure décrite en Terraform, durcissement avec Ansible, sur Oracle Cloud.</p>
+        <div class="card__more">
+          <p>Faire l'inverse de la plupart des tutoriels cloud : au lieu d'exposer un serveur avec un port SSH ouvert, isoler complètement la machine applicative tout en gardant un accès administrateur fiable.</p>
+          <h5>Ce que j'ai réalisé</h5>
+          <ul>
+            <li>VCN 10.1.0.0/16 en Terraform : sous-réseau public (bastion) et sous-réseau privé où Oracle refuse d'attribuer une IP publique</li>
+            <li>Internet Gateway pour le bastion seul, NAT Gateway en sortie uniquement pour les mises à jour du serveur privé</li>
+            <li>Security Lists : seul le port WireGuard (51820/udp) est ouvert ; SSH vers le privé uniquement depuis le bastion</li>
+            <li>Durcissement Ansible : SSH par clé uniquement, root désactivé, fail2ban, mises à jour automatiques, ufw</li>
+            <li>Preuve : scan nmap depuis Internet sans aucun port visible, et accès SSH complet au serveur privé via le VPN</li>
+            <li>Diagnostic du pare-feu iptables caché des images Oracle (règles ajoutées après la règle de rejet, en INPUT puis en FORWARD)</li>
+          </ul>
+          <h5>Outils</h5>
+          <p>Terraform, Ansible, WireGuard, Oracle Cloud, iptables, ufw, fail2ban, nmap.</p>
+        </div>
+        <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/hussainshaqsi/oci-reseaux-privee" target="_blank" rel="noopener">Code</a></div>
+      </div>
+    </article>
+  </div>
+
+  <h3 class="subhead mono">Projets universitaires récents</h3>
   <div class="projlist">
-    <div class="projlist__item" style="--c: var(--ink);">
-      <h4>Pipeline CI/CD Django</h4>
-      <p>Docker, k3s, Helm · Traefik HTTPS, GitLab CI, Prometheus / Grafana, Oracle Cloud</p>
-    </div>
-    <div class="projlist__item" style="--c: var(--rt1);">
-      <h4>Réseau cloud privé et VPN WireGuard</h4>
-      <p>Terraform, Ansible, Oracle Cloud · bastion, durcissement SSH</p>
-    </div>
     <div class="projlist__item" style="--c: var(--rt3);">
-      <h4>Carrefour intelligent (SAÉ 3.02)</h4>
+      <h4>Carrefour intelligent · SAÉ 3.02</h4>
       <p>Serveur TCP multi-clients en Python, protocole JSON, algorithme de Dijkstra</p>
       <a href="sae3-02.html">Voir le détail →</a>
     </div>
-    <div class="projlist__item" style="--c: var(--rt2);">
-      <h4>Capteurs IoT</h4>
-      <p>MQTT, Python, MySQL, Django</p>
+    <div class="projlist__item" style="--c: var(--rt3);">
+      <h4>Capteurs IoT · SAÉ 2.04</h4>
+      <p>MQTT, Python, MySQL, tableau de bord Django</p>
+      <a href="#sae2-04">Voir la SAÉ →</a>
     </div>
     <div class="projlist__item" style="--c: var(--rt1);">
       <h4>Infrastructure réseau multi-sites</h4>
@@ -465,6 +511,7 @@ body.modal-open { overflow: hidden; }
         <ul class="ticks">
           <li><strong>SAÉ3.02</strong> — Développer des applications communicantes (BUT2)</li>
           <li><strong>SAÉ2.03</strong> — Mettre en place une solution informatique pour l'entreprise</li>
+          <li><strong>SAÉ2.04</strong> — Projet intégratif : chaîne de collecte IoT</li>
           <li><strong>SAÉ1.04</strong> — Se présenter sur Internet &nbsp;·&nbsp; <strong>SAÉ1.05</strong> — Traiter des données</li>
         </ul>
       </div>
@@ -475,6 +522,7 @@ body.modal-open { overflow: hidden; }
         <div class="proof">
           <a class="proof__item" href="sae3-02.html"><span class="proof__dot"></span><span>SAÉ3.02 — Carrefour intelligent (BUT2 · AC23.03) →</span></a>
           <a class="proof__item" href="#sae2-03"><span class="proof__dot"></span><span>SAÉ2.03 — Solution informatique entreprise →</span></a>
+          <a class="proof__item" href="#sae2-04"><span class="proof__dot"></span><span>SAÉ2.04 — Capteurs IoT (MQTT, MySQL, Django) →</span></a>
           <a class="proof__item" href="#sae1-04"><span class="proof__dot"></span><span>SAÉ1.04 — Se présenter sur Internet →</span></a>
           <a class="proof__item" href="#sae1-05"><span class="proof__dot"></span><span>SAÉ1.05 — Traiter des données →</span></a>
           <a class="proof__item" href="#top"><span class="proof__dot"></span><span>SAÉ2.05 — Ce portfolio →</span></a>
@@ -579,6 +627,28 @@ body.modal-open { overflow: hidden; }
       <p>Debian, Nginx, Gunicorn, Django, MySQL, systemd, Git, VirtualBox.</p>
     </div>
     <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/ilkan682/SAE-Gestion-Notes" target="_blank" rel="noopener">Code</a></div>
+  </div>
+</article>
+<article class="card" id="sae2-04">
+  <div class="card__img"><img src="sae204.svg" alt="SAÉ2.04 — Chaîne de collecte IoT" onerror="this.remove()"></div>
+  <div class="card__body">
+    <div class="card__tags mono"><span class="t t--rt3">RT3</span></div>
+    <h3 class="card__title">SAÉ2.04 — Capteurs IoT</h3>
+    <p class="card__desc">Chaîne de collecte de températures : des capteurs publient en MQTT, un service Python les enregistre dans MySQL, un tableau de bord Django les affiche.</p>
+    <div class="card__more">
+      <p>Récupérer les relevés de capteurs de température domestiques, les stocker de façon fiable et les présenter dans une application web.</p>
+      <h5>Ce que j'ai réalisé</h5>
+      <ul>
+        <li>Service <strong>Collecte</strong> en Python : abonnement aux topics MQTT, analyse de chaque message (identifiant, pièce, date, température avec virgule décimale)</li>
+        <li>Insertion en SQL brut (sans ORM) : le capteur s'il est nouveau, puis la mesure</li>
+        <li>Tolérance aux pannes : si MySQL est indisponible, les relevés sont mis en cache dans un fichier local puis renvoyés au retour de la connexion ; reconnexion automatique au broker</li>
+        <li>Tableau de bord <strong>Django</strong> : liste des capteurs et page de détail avec leurs mesures, sur des tables MySQL existantes (<code>managed = False</code>)</li>
+        <li>Identifiants hors du dépôt : fichier de configuration ignoré par Git et variables d'environnement</li>
+      </ul>
+      <h5>Outils</h5>
+      <p>Python, paho-mqtt, PyMySQL, MySQL, Django, HTML/CSS.</p>
+    </div>
+    <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/hussainshaqsi/Collecte" target="_blank" rel="noopener">Code collecte</a><a href="https://github.com/hussainshaqsi/SAe-projet-integratif" target="_blank" rel="noopener">Code tableau de bord</a></div>
   </div>
 </article>
     <article class="card" id="sae1-01">
@@ -804,7 +874,7 @@ body.modal-open { overflow: hidden; }
 
     panel.className = 'modal__panel';
     var t = card.querySelector('.t');
-    if (t){ panel.classList.add(t.classList.contains('t--rt1') ? 'is-rt1' : t.classList.contains('t--rt2') ? 'is-rt2' : 'is-rt3'); }
+    if (t && !t.classList.contains('t--perso')){ panel.classList.add(t.classList.contains('t--rt1') ? 'is-rt1' : t.classList.contains('t--rt2') ? 'is-rt2' : 'is-rt3'); }
 
     modal.classList.add('open');
     modal.setAttribute('aria-hidden','false');

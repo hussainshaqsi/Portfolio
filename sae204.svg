@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="IBM Plex Mono, ui-monospace, monospace">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0E1726"/></marker>
+  </defs>
+  <rect width="640" height="400" fill="#EDF0F5"/>
+  <g stroke="rgba(14,23,38,.06)"><path d="M0 40H640M0 80H640M0 120H640M0 160H640M0 200H640M0 240H640M0 280H640M0 320H640M0 360H640M40 0V400M80 0V400M120 0V400M160 0V400M200 0V400M240 0V400M280 0V400M320 0V400M360 0V400M400 0V400M440 0V400M480 0V400M520 0V400M560 0V400M600 0V400"/></g>
+  <g font-size="12" fill="#0E1726" text-anchor="middle">
+    <rect x="20" y="160" width="104" height="80" rx="10" fill="#fff" stroke="rgba(14,23,38,.2)"/>
+    <text x="72" y="196">Capteurs</text><text x="72" y="214" font-size="10" fill="#8A93A6">température</text>
+    <rect x="148" y="160" width="104" height="80" rx="10" fill="#fff" stroke="rgba(14,23,38,.2)"/>
+    <text x="200" y="196">Broker</text><text x="200" y="214" font-size="10" fill="#8A93A6">MQTT</text>
+    <rect x="276" y="150" width="112" height="100" rx="10" fill="#fff" stroke="#E0660A" stroke-width="2"/>
+    <text x="332" y="190">Collecte</text><text x="332" y="208" font-size="10" fill="#8A93A6">Python</text><text x="332" y="224" font-size="10" fill="#8A93A6">+ cache local</text>
+    <rect x="412" y="160" width="96" height="80" rx="10" fill="#fff" stroke="rgba(14,23,38,.2)"/>
+    <text x="460" y="196">MySQL</text><text x="460" y="214" font-size="10" fill="#8A93A6">SQL brut</text>
+    <rect x="532" y="150" width="92" height="100" rx="10" fill="#fff" stroke="#E0660A" stroke-width="2"/>
+    <text x="578" y="190">Tableau</text><text x="578" y="206">de bord</text><text x="578" y="224" font-size="10" fill="#8A93A6">Django</text>
+  </g>
+  <g stroke="#0E1726" stroke-width="1.6">
+    <path d="M124 200H144" marker-end="url(#a)"/><path d="M252 200H272" marker-end="url(#a)"/>
+    <path d="M388 200H408" marker-end="url(#a)"/><path d="M508 200H528" marker-end="url(#a)"/>
+  </g>
+  <text x="320" y="300" font-size="11" text-anchor="middle" fill="#4A5468">orange = mes deux dépôts</text>
+  <text x="320" y="388" font-size="12" text-anchor="middle" fill="#4A5468">SAÉ 2.04 · Chaîne de collecte IoT</text>
+</svg>

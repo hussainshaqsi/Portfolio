@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="IBM Plex Mono, ui-monospace, monospace">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0E1726"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0E9B8E"/></marker>
+  </defs>
+  <rect width="640" height="400" fill="#EDF0F5"/>
+  <g stroke="rgba(14,23,38,.06)"><path d="M0 40H640M0 80H640M0 120H640M0 160H640M0 200H640M0 240H640M0 280H640M0 320H640M0 360H640M40 0V400M80 0V400M120 0V400M160 0V400M200 0V400M240 0V400M280 0V400M320 0V400M360 0V400M400 0V400M440 0V400M480 0V400M520 0V400M560 0V400M600 0V400"/></g>
+  <!-- left: push + gitlab -->
+  <rect x="24" y="90" width="120" height="44" rx="9" fill="#fff" stroke="rgba(14,23,38,.18)"/>
+  <text x="84" y="117" font-size="12" text-anchor="middle" fill="#0E1726">git push main</text>
+  <rect x="24" y="170" width="120" height="44" rx="9" fill="#fff" stroke="#E0660A" stroke-width="1.8"/>
+  <text x="84" y="197" font-size="12" text-anchor="middle" fill="#0E1726">GitLab CI/CD</text>
+  <path d="M84 134V166" stroke="#0E1726" stroke-width="1.6" marker-end="url(#a)"/>
+  <!-- VM -->
+  <rect x="180" y="40" width="436" height="320" rx="14" fill="#fff" stroke="#0E1726" stroke-width="1.6"/>
+  <text x="198" y="66" font-size="12" font-weight="600" fill="#0E1726">VM Oracle Cloud · Always Free · 0 €/mois</text>
+  <rect x="198" y="170" width="118" height="44" rx="9" fill="#F4F6F9" stroke="#E0660A"/>
+  <text x="257" y="191" font-size="11" text-anchor="middle" fill="#0E1726">runner</text>
+  <text x="257" y="205" font-size="10" text-anchor="middle" fill="#8A93A6">auto-hébergé</text>
+  <path d="M144 192H194" stroke="#E0660A" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <rect x="356" y="110" width="118" height="44" rx="9" fill="#F4F6F9" stroke="rgba(14,23,38,.2)"/>
+  <text x="415" y="137" font-size="11" text-anchor="middle" fill="#0E1726">Docker Compose</text>
+  <rect x="356" y="230" width="118" height="44" rx="9" fill="#F4F6F9" stroke="#1B4DFF"/>
+  <text x="415" y="251" font-size="11" text-anchor="middle" fill="#0E1726">k3s + Helm</text>
+  <text x="415" y="265" font-size="10" text-anchor="middle" fill="#8A93A6">mon chart</text>
+  <path d="M316 184L352 140" stroke="#0E1726" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M316 200L352 244" stroke="#0E1726" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="508" y="160" width="92" height="64" rx="9" fill="#F4F6F9" stroke="rgba(14,23,38,.2)"/>
+  <text x="554" y="187" font-size="11" text-anchor="middle" fill="#0E1726">Traefik</text>
+  <text x="554" y="203" font-size="10" text-anchor="middle" fill="#8A93A6">HTTPS auto</text>
+  <path d="M504 180L478 138" stroke="#0E1726" stroke-width="1.3" marker-end="url(#a)"/>
+  <path d="M504 206L478 248" stroke="#0E1726" stroke-width="1.3" marker-end="url(#a)"/>
+  <rect x="198" y="292" width="200" height="44" rx="9" fill="#F4F6F9" stroke="#0E9B8E"/>
+  <text x="298" y="319" font-size="11" text-anchor="middle" fill="#0E1726">Prometheus → Grafana</text>
+  <path d="M398 284L402 278" stroke="none"/>
+  <path d="M370 276L330 290" stroke="#0E9B8E" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#g)"/>
+  <text x="554" y="104" font-size="11" text-anchor="middle" fill="#4A5468">utilisateur</text>
+  <path d="M554 112V154" stroke="#0E1726" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="320" y="388" font-size="12" text-anchor="middle" fill="#4A5468">Pipeline CI/CD Django</text>
+</svg>
