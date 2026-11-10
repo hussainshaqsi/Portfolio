@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark"&&t!=="light"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})();</script>
 <title>Portfolio — Hussain AL SHAQSI · BUT Réseaux & Télécommunications · Recherche de stage</title>
 <meta name="description" content="Étudiant en BUT Réseaux & Télécommunications (parcours DevCloud) à l'IUT de Colmar, en recherche d'un stage de 8 semaines du 5 avril au 4 juin 2027 : réseaux, systèmes, cloud ou support informatique." />
 
@@ -229,16 +230,17 @@ body.modal-open { overflow: hidden; }
   .modal__body { max-height: none; }
 }
 </style>
+<link rel="stylesheet" href="theme.css" />
 </head>
 <body>
 
 <div class="bg-grid" aria-hidden="true"></div>
 
 <header class="nav" id="top">
-  <a class="nav__brand" href="#top">
-    <span class="nav__mark">RT</span>
-    <span class="nav__name">Hussain AL SHAQSI</span>
-  </a>
+  <div class="nav__brand">
+    <button class="nav__mark theme-toggle" type="button" aria-pressed="false" title="Passer en mode sombre" aria-label="Passer en mode sombre">RT</button>
+    <a class="nav__name" href="#top">Hussain AL SHAQSI</a>
+  </div>
   <nav class="nav__links" aria-label="Navigation principale">
     <a href="#profil">Profil</a>
     <a href="#savoir-faire">Savoir-faire</a>
@@ -896,5 +898,6 @@ body.modal-open { overflow: hidden; }
 })();
 </script>
 
+<script src="theme.js"></script>
 </body>
 </html>

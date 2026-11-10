@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark"&&t!=="light"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})();</script>
 <title>SAÉ 3.02 · Carrefour intelligent — Hussain AL SHAQSI</title>
 <meta name="description" content="Portfolio de compétences individuel — SAÉ 3.02 Carrefour intelligent, BUT R&T DevCloud, IUT de Colmar." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -247,16 +248,17 @@ body.modal-open { overflow: hidden; }
 .ev .what { display: block; margin-top: 4px; }
 @media (max-width: 680px) { .split td:first-child { white-space: normal; } }
 </style>
+<link rel="stylesheet" href="theme.css" />
 </head>
 <body>
 
 <div class="bg-grid" aria-hidden="true"></div>
 
 <header class="nav" id="top">
-  <a class="nav__brand" href="index.html">
-    <span class="nav__mark">RT</span>
-    <span class="nav__name">Hussain AL SHAQSI</span>
-  </a>
+  <div class="nav__brand">
+    <button class="nav__mark theme-toggle" type="button" aria-pressed="false" title="Passer en mode sombre" aria-label="Passer en mode sombre">RT</button>
+    <a class="nav__name" href="index.html">Hussain AL SHAQSI</a>
+  </div>
   <nav class="nav__links" aria-label="Navigation de la page">
     <a href="#contexte">Contexte</a>
     <a href="#c1">Client/serveur</a>
@@ -776,5 +778,6 @@ def envoyer_commande(self, action, params):
   }
 })();
 </script>
+<script src="theme.js"></script>
 </body>
 </html>

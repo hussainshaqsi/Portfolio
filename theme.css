@@ -1,0 +1,134 @@
+/* =====================================================================
+   Thème clair / sombre — partagé par toutes les pages
+   Le bouton « RT » de la barre de navigation bascule data-theme sur <html>.
+   ===================================================================== */
+
+/* ---------- Bouton RT (bascule de thème) ---------- */
+.nav__brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.nav__name { color: var(--ink); }
+button.nav__mark {
+  font-family: var(--f-mono); font-weight: 600; font-size: .82rem; letter-spacing: .05em;
+  color: #fff; background: var(--ink); border: 1px solid transparent; border-radius: 7px;
+  padding: 5px 8px; line-height: 1.25; cursor: pointer; position: relative;
+  transition: background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease),
+              box-shadow .35s var(--ease), transform .2s var(--ease);
+}
+button.nav__mark:hover { transform: translateY(-1px); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); }
+button.nav__mark:active { transform: scale(.94); }
+button.nav__mark:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* petite pastille qui indique l'état : soleil (clair) / lune (sombre) */
+button.nav__mark::after {
+  content: ""; position: absolute; right: -4px; top: -4px; width: 9px; height: 9px; border-radius: 50%;
+  background: #FFC94D; border: 2px solid var(--paper);
+  transition: background .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+
+/* ---------- Grille : teinte bleue en clair ---------- */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(27, 77, 255, .075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 77, 255, .075) 1px, transparent 1px);
+}
+
+/* Le texte « capture → ici » ne sert que lorsqu'il n'y a pas d'image */
+.card__img:has(img)::before { content: none; }
+
+/* ---------- Transition douce pendant la bascule ---------- */
+html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color .45s var(--ease), border-color .45s var(--ease), color .45s var(--ease),
+              fill .45s var(--ease), box-shadow .45s var(--ease) !important;
+}
+
+/* =====================================================================
+   MODE SOMBRE
+   ===================================================================== */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper:     #060A14;
+  --paper-2:   #0C1324;
+  --ink:       #E9EEF8;
+  --ink-soft:  #A6B1C8;
+  --ink-faint: #69748F;
+  --line:      rgba(120, 160, 255, .14);
+  --line-soft: rgba(80, 140, 255, .08);
+  --accent:    #4F86FF;
+  --rt1:       #4F86FF;
+  --rt2:       #22D3B6;
+  --rt3:       #FF8A3D;
+  --neon:      #3B8BFF;
+  --shadow:    0 1px 0 rgba(255,255,255,.03) inset, 0 12px 32px -14px rgba(0,0,0,.7);
+  --shadow-lg: 0 0 0 1px rgba(79,134,255,.18), 0 28px 70px -24px rgba(0,0,0,.85), 0 0 60px -20px rgba(59,139,255,.35);
+}
+html[data-theme="dark"] body { background: var(--paper); }
+html[data-theme="dark"] ::selection { background: rgba(79,134,255,.35); color: #fff; }
+
+/* Grille néon : traits bleus + halo, fondus vers le bas */
+html[data-theme="dark"] .bg-grid {
+  background-image:
+    linear-gradient(rgba(59, 139, 255, .22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 139, 255, .22) 1px, transparent 1px);
+  filter: drop-shadow(0 0 2px rgba(59, 139, 255, .9)) drop-shadow(0 0 10px rgba(59, 139, 255, .35));
+}
+/* lueur d'ambiance en haut de page */
+html[data-theme="dark"] .bg-grid::before {
+  content: ""; position: absolute; inset: -20% -10% auto; height: 70vh;
+  background: radial-gradient(ellipse 60% 55% at 50% 0%, rgba(59, 139, 255, .22), transparent 70%);
+  pointer-events: none;
+}
+
+/* Barre de navigation */
+html[data-theme="dark"] .nav { background: rgba(6, 10, 20, .72); border-bottom-color: rgba(79,134,255,.18); }
+html[data-theme="dark"] button.nav__mark {
+  background: rgba(59,139,255,.08); color: #CFE0FF; border-color: rgba(79,134,255,.55);
+  text-shadow: 0 0 8px rgba(79,134,255,.9);
+  box-shadow: 0 0 0 1px rgba(79,134,255,.15), 0 0 16px -2px rgba(59,139,255,.55), inset 0 0 10px rgba(59,139,255,.18);
+}
+html[data-theme="dark"] button.nav__mark:hover {
+  box-shadow: 0 0 0 1px rgba(79,134,255,.35), 0 0 24px 0 rgba(59,139,255,.7), inset 0 0 12px rgba(59,139,255,.28);
+}
+html[data-theme="dark"] button.nav__mark::after { background: #9BB8FF; box-shadow: 0 0 8px rgba(155,184,255,.9); }
+html[data-theme="dark"] .nav__cta { background: var(--accent); color: #fff !important; box-shadow: 0 0 22px -6px rgba(79,134,255,.8); }
+html[data-theme="dark"] .nav__cta:hover { background: #6A9BFF; }
+
+/* Boutons */
+html[data-theme="dark"] .btn--solid { background: var(--accent); color: #fff; box-shadow: 0 0 26px -8px rgba(79,134,255,.9); }
+html[data-theme="dark"] .btn--solid:hover { background: #6A9BFF; box-shadow: 0 0 32px -6px rgba(79,134,255,1); }
+html[data-theme="dark"] .btn--ghost { background: rgba(12,19,36,.7); }
+html[data-theme="dark"] .btn--ghost:hover { border-color: var(--accent); box-shadow: 0 0 20px -8px rgba(79,134,255,.8); }
+
+/* Titre : léger halo sur le nom */
+html[data-theme="dark"] .hero__last { color: #5E8FFF; text-shadow: 0 0 28px rgba(79,134,255,.45); }
+html[data-theme="dark"] .hero__meta, html[data-theme="dark"] .section__idx { text-shadow: 0 0 12px rgba(79,134,255,.6); }
+
+/* Cartes et surfaces */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .comp,
+html[data-theme="dark"] .skill { background: linear-gradient(180deg, rgba(16,25,47,.92), rgba(10,16,31,.92)); }
+html[data-theme="dark"] .card:hover { border-color: rgba(79,134,255,.4); }
+html[data-theme="dark"] .card__img,
+html[data-theme="dark"] .modal__media { background-color: #08101F; }
+html[data-theme="dark"] .t--perso { background: #24314F; }
+html[data-theme="dark"] .dispo { background: rgba(12,19,36,.85); box-shadow: 0 0 30px -12px rgba(34,211,182,.5); }
+
+/* Schémas SVG (fond clair) : inversion qui conserve les teintes */
+html[data-theme="dark"] img[src$=".svg"] { filter: invert(.93) hue-rotate(180deg) saturate(1.35); mix-blend-mode: lighten; }
+
+/* Captures d'écran (fond blanc) : légèrement atténuées, pleine luminosité au survol */
+html[data-theme="dark"] .card__img img:not([src$=".svg"]),
+html[data-theme="dark"] .modal__media img:not([src$=".svg"]) { filter: brightness(.8) contrast(1.05); transition: filter .35s var(--ease), transform .5s var(--ease); }
+html[data-theme="dark"] .card:hover .card__img img:not([src$=".svg"]),
+html[data-theme="dark"] .modal__media img:not([src$=".svg"]) { filter: none; }
+
+/* Fenêtre « Détails » */
+html[data-theme="dark"] .modal__backdrop { background: rgba(2, 5, 12, .72); }
+html[data-theme="dark"] .modal__panel { border: 1px solid rgba(79,134,255,.2); }
+html[data-theme="dark"] .modal__close { background: rgba(12,19,36,.92); color: var(--ink); border: 1px solid var(--line); }
+html[data-theme="dark"] .modal__close:hover { background: var(--paper-2); }
+
+/* Page SAÉ 3.02 */
+html[data-theme="dark"] .doc pre { background: #040811; border: 1px solid rgba(79,134,255,.18); }
+html[data-theme="dark"] .split th { background: rgba(6,10,20,.6); }
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim, html.theme-anim * { transition: none !important; }
+}
