@@ -379,6 +379,7 @@ body.modal-open { overflow: hidden; }
         <p class="reslist mono">R1.07 Fondamentaux programmation · R1.08 Systèmes d'exploitation · R1.09 Technologies Web · R2.07 Sources de données · R2.08 Traitement de données structurées · R2.09 Développement Web</p>
         <h4>Preuves &amp; réalisations</h4>
         <div class="proof">
+          <a class="proof__item" href="sae3-02.html"><span class="proof__dot"></span><span>SAÉ3.02 — Carrefour intelligent (BUT2 · AC23.03) →</span></a>
           <a class="proof__item" href="#sae2-03"><span class="proof__dot"></span><span>SAÉ2.03 — Solution informatique entreprise →</span></a>
           <a class="proof__item" href="#sae1-04"><span class="proof__dot"></span><span>SAÉ1.04 — Se présenter sur Internet →</span></a>
           <a class="proof__item" href="#sae1-05"><span class="proof__dot"></span><span>SAÉ1.05 — Traiter des données →</span></a>
@@ -396,6 +397,29 @@ body.modal-open { overflow: hidden; }
   <p class="section__intro">Les SAÉ sont les situations d'apprentissage et d'évaluation menées cette année mes preuves concrètes. Cliquez sur « Détails » pour le sujet complet et ce que j'ai réalisé.</p>
 
   <div class="cards">
+
+    <article class="card" id="sae3-02">
+      <div class="card__img"><img src="sae302.svg" alt="SAÉ3.02 — Architecture client/serveur du carrefour intelligent" onerror="this.remove()"></div>
+      <div class="card__body">
+        <div class="card__tags mono"><span class="t t--rt3">RT3</span></div>
+        <h3 class="card__title">SAÉ3.02 — Carrefour intelligent</h3>
+        <p class="card__desc">Simulation client/serveur en Python d'un carrefour qui donne la priorité aux véhicules de secours. Ma partie : le serveur TCP multi-clients, le protocole d'échange JSON, le modèle des véhicules et l'algorithme de Dijkstra.</p>
+        <div class="card__more">
+          <p>Projet en binôme (BUT2 DevCloud, S3) : un serveur possède l'état du carrefour et le diffuse en temps réel à un client PyQt6 qui affiche la maquette et envoie les demandes d'urgence. J'ai pris en charge le serveur et la couche réseau ; l'interface est de mon binôme.</p>
+          <h5>Ma contribution</h5>
+          <ul>
+            <li>Serveur TCP multi-clients : socket, bind, listen, accept, un thread par client, boucle de simulation, diffusion de l'état</li>
+            <li>Protocole applicatif : messages JSON délimités par un saut de ligne, tampon de reconstitution des messages</li>
+            <li>Première version du client réseau (reconnexion automatique) et branchement sur la fenêtre PyQt6 via un QTimer</li>
+            <li>Modèle de déplacement des véhicules et algorithme de Dijkstra (plus court chemin)</li>
+            <li>Test client/serveur sur deux PC du réseau de l'IUT ; résolution d'un conflit de fusion Git avec le code de mon binôme</li>
+          </ul>
+          <h5>Outils</h5>
+          <p>Python, socket, threading, JSON, PyQt6, Git / GitHub.</p>
+        </div>
+        <div class="card__links mono"><a href="#">Détails</a><a href="sae3-02.html">Portfolio de compétences</a><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent" target="_blank" rel="noopener">Code</a></div>
+      </div>
+    </article>
 
     <article class="card" id="sae2-01">
       <div class="card__img"><img src="gns3.png" alt="SAÉ2.01 — Réseau d'une petite structure" onerror="this.remove()"></div>

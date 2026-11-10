@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SAÉ 3.02 · Carrefour intelligent — Hussain AL SHAQSI</title>
+<meta name="description" content="Portfolio de compétences individuel — SAÉ 3.02 Carrefour intelligent, BUT R&T DevCloud, IUT de Colmar." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --paper:      #F4F6F9;
+  --paper-2:    #FFFFFF;
+  --ink:        #0E1726;
+  --ink-soft:   #4A5468;
+  --ink-faint:  #8A93A6;
+  --line:       rgba(14, 23, 38, 0.10);
+  --line-soft:  rgba(14, 23, 38, 0.06);
+  --accent:     #1B4DFF;
+  --rt1:        #1B4DFF;
+  --rt2:        #0E9B8E;
+  --rt3:        #E0660A;
+  --radius:     14px;
+  --radius-sm:  9px;
+  --shadow:     0 1px 2px rgba(14,23,38,.05), 0 12px 32px -12px rgba(14,23,38,.16);
+  --shadow-lg:  0 24px 60px -20px rgba(14,23,38,.28);
+  --maxw:       1080px;
+  --ease:       cubic-bezier(.22, 1, .36, 1);
+  --f-display:  "Fraunces", Georgia, serif;
+  --f-body:     "IBM Plex Sans", system-ui, sans-serif;
+  --f-mono:     "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+body { font-family: var(--f-body); color: var(--ink); background: var(--paper); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.mono { font-family: var(--f-mono); letter-spacing: .02em; }
+
+.bg-grid { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 100%);
+          mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 35%, transparent 100%); }
+
+a { color: inherit; text-decoration: none; }
+
+.nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between;
+  padding: 16px clamp(20px, 5vw, 56px); background: rgba(244,246,249,.78); backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid var(--line); }
+.nav__brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.nav__mark { font-family: var(--f-mono); font-weight: 600; font-size: .82rem; color: #fff; background: var(--ink); padding: 5px 8px; border-radius: 7px; letter-spacing: .05em; }
+.nav__name { font-size: .98rem; letter-spacing: .01em; }
+.nav__links { display: flex; align-items: center; gap: 30px; }
+.nav__links a { font-size: .92rem; color: var(--ink-soft); position: relative; transition: color .2s; }
+.nav__links a:not(.nav__cta)::after { content: ""; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background: var(--accent); transition: width .25s var(--ease); }
+.nav__links a:hover { color: var(--ink); }
+.nav__links a:hover::after { width: 100%; }
+.nav__cta { background: var(--ink); color: #fff !important; padding: 8px 16px; border-radius: 8px; font-weight: 500; transition: transform .2s, background .2s; }
+.nav__cta:hover { background: var(--accent); transform: translateY(-1px); }
+.nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; }
+.nav__burger span { width: 24px; height: 2px; background: var(--ink); transition: .3s; }
+
+main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+.section { padding: clamp(64px, 9vw, 120px) 0; border-top: 1px solid var(--line); }
+.section__head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 40px; }
+.section__idx { font-size: .9rem; color: var(--accent); font-weight: 600; }
+.section__title { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.9rem, 4vw, 2.9rem); letter-spacing: -.02em; }
+.section__intro { max-width: 60ch; color: var(--ink-soft); font-size: 1.06rem; margin-bottom: 48px; }
+.section__intro em, .comp__col em { font-style: normal; color: var(--ink); font-weight: 600; }
+
+.hero { padding: clamp(70px, 12vw, 150px) 0 clamp(50px, 7vw, 90px); }
+.hero__meta { font-size: .82rem; color: var(--accent); font-weight: 600; margin-bottom: 26px; }
+.hero__title { font-family: var(--f-display); font-weight: 600; font-size: clamp(2.8rem, 9vw, 6rem); line-height: .98; letter-spacing: -.035em; margin-bottom: 30px; }
+.hero__pre { display: block; font-size: clamp(1rem, 2.4vw, 1.4rem); font-weight: 400; font-style: italic; color: var(--ink-soft); letter-spacing: 0; margin-bottom: 6px; }
+.hero__last { color: var(--accent); }
+.hero__lede { max-width: 56ch; font-size: clamp(1.05rem, 2vw, 1.22rem); color: var(--ink-soft); }
+.hero__lede strong { color: var(--ink); font-weight: 600; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 36px 0 30px; }
+.hero__chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+.hero__chips li { font-size: .8rem; padding: 7px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-2); color: var(--ink-soft); }
+.hero__chips li:nth-child(1) { border-color: color-mix(in srgb, var(--rt1) 35%, var(--line)); }
+.hero__chips li:nth-child(2) { border-color: color-mix(in srgb, var(--rt2) 35%, var(--line)); }
+.hero__chips li:nth-child(3) { border-color: color-mix(in srgb, var(--rt3) 35%, var(--line)); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; font-size: .94rem; font-weight: 500; padding: 11px 20px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; transition: transform .2s var(--ease), background .2s, border-color .2s, box-shadow .2s; }
+.btn--solid { background: var(--ink); color: #fff; }
+.btn--solid:hover { background: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn--ghost { background: var(--paper-2); border-color: var(--line); color: var(--ink); }
+.btn--ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+.profil { display: grid; grid-template-columns: 280px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.profil__photo { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); background: var(--paper-2); }
+.profil__photo img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.profil__text .lead { font-size: 1.22rem; color: var(--ink); margin-bottom: 18px; line-height: 1.5; }
+.profil__text p { color: var(--ink-soft); margin-bottom: 16px; }
+.profil__facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 28px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
+.profil__facts div { display: flex; flex-direction: column; gap: 4px; font-size: .98rem; }
+.profil__facts span { font-size: .74rem; text-transform: uppercase; color: var(--ink-faint); letter-spacing: .08em; }
+
+.comp { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 4vw, 40px); margin-bottom: 26px; box-shadow: var(--shadow); position: relative; overflow: hidden; --c: var(--accent); }
+.comp::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
+.comp--rt1 { --c: var(--rt1); }
+.comp--rt2 { --c: var(--rt2); }
+.comp--rt3 { --c: var(--rt3); }
+.comp__head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 28px; }
+.comp__code { font-size: .85rem; font-weight: 600; color: #fff; background: var(--c); padding: 5px 11px; border-radius: 7px; letter-spacing: .06em; }
+.comp__title { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.8rem); letter-spacing: -.015em; flex: 1 1 280px; }
+.comp__tag { width: 100%; font-size: .78rem; color: var(--ink-faint); }
+.comp__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); }
+.comp__col h4 { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--c); margin: 22px 0 12px; }
+.comp__col h4:first-child { margin-top: 0; }
+
+.ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.ticks li { position: relative; padding-left: 24px; color: var(--ink-soft); font-size: .98rem; }
+.ticks li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; border-radius: 2px; background: var(--c); transform: rotate(45deg); }
+
+.reslist { font-size: .8rem; line-height: 1.7; color: var(--ink-faint); background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 4px; }
+.proof { display: flex; flex-direction: column; gap: 8px; }
+.proof__item { display: flex; align-items: center; gap: 11px; padding: 12px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: .92rem; color: var(--ink-soft); transition: border-color .2s, transform .2s, color .2s; }
+.proof__item:hover { border-color: var(--c); color: var(--ink); transform: translateX(3px); }
+.proof__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex-shrink: 0; }
+
+.reflect { border-left: 3px solid var(--c); padding: 4px 0 4px 18px; margin-top: 4px; font-family: var(--f-display); font-size: 1.05rem; font-style: italic; color: var(--ink-soft); line-height: 1.6; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
+.card { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .3s var(--ease), box-shadow .3s; display: flex; flex-direction: column; }
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.card { scroll-margin-top: 104px; }
+.card:target { box-shadow: 0 0 0 2px var(--accent), var(--shadow-lg); }
+.card__img { position: relative; aspect-ratio: 16/10; overflow: hidden; border-bottom: 1px solid var(--line); background-color: #EDF0F5; background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px); background-size: 32px 32px; }
+.card__img::before { content: "capture → ici"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--ink-faint); font-family: var(--f-mono); font-size: .8rem; }
+.card__img img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s var(--ease); }
+.card:hover .card__img img { transform: scale(1.05); }
+.card__body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.card__tags { display: flex; gap: 6px; margin-bottom: 10px; }
+.t { font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 6px; color: #fff; }
+.t--rt1 { background: var(--rt1); } .t--rt2 { background: var(--rt2); } .t--rt3 { background: var(--rt3); }
+.card__title { font-family: var(--f-display); font-weight: 500; font-size: 1.22rem; margin-bottom: 8px; letter-spacing: -.01em; }
+.card__desc { color: var(--ink-soft); font-size: .94rem; flex: 1; }
+.card__links { display: flex; gap: 16px; margin-top: 16px; font-size: .84rem; }
+.card__links a { color: var(--accent); font-weight: 600; transition: opacity .2s; }
+.card__links a:hover { opacity: .65; }
+
+.bilan { max-width: 64ch; }
+.bilan .lead { font-size: 1.3rem; font-family: var(--f-display); line-height: 1.5; margin-bottom: 20px; }
+.bilan p { color: var(--ink-soft); }
+
+.footer { border-top: 1px solid var(--line); margin-top: 40px; padding: clamp(60px, 9vw, 110px) clamp(20px, 5vw, 40px) 50px; text-align: center; }
+.footer__cta h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -.02em; margin-bottom: 12px; }
+.footer__cta p { color: var(--ink-soft); margin-bottom: 26px; }
+.footer__links { display: flex; justify-content: center; gap: 26px; margin: 38px 0 24px; font-size: .9rem; }
+.footer__links a { color: var(--ink-soft); transition: color .2s; }
+.footer__links a:hover { color: var(--accent); }
+.footer__base { font-size: .78rem; color: var(--ink-faint); }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+
+@media (max-width: 860px) { .profil { grid-template-columns: 1fr; } .profil__photo { max-width: 220px; } .comp__grid { grid-template-columns: 1fr; gap: 8px; } }
+@media (max-width: 680px) {
+  .nav__links { position: fixed; inset: 64px 0 auto; flex-direction: column; gap: 0; background: var(--paper-2); border-bottom: 1px solid var(--line); padding: 8px 0; transform: translateY(-130%); transition: transform .35s var(--ease); }
+  .nav__links.open { transform: none; }
+  .nav__links a { padding: 14px 28px; width: 100%; }
+  .nav__links a:not(.nav__cta)::after { display: none; }
+  .nav__cta { margin: 8px 28px; text-align: center; }
+  .nav__burger { display: flex; }
+  .profil__facts { grid-template-columns: 1fr; }
+}
+
+/* ===================== MODAL DÉTAILS (ajout) ===================== */
+.modal { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; }
+.modal.open { display: flex; }
+.modal__backdrop { position: absolute; inset: 0; background: rgba(14,23,38,.55); backdrop-filter: blur(4px); opacity: 0; transition: opacity .3s var(--ease); }
+.modal.open .modal__backdrop { opacity: 1; }
+.modal__panel { position: relative; z-index: 1; width: min(980px, 100%); max-height: 86vh;
+  display: grid; grid-template-columns: minmax(0, 46%) 1fr;
+  background: var(--paper-2); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg);
+  transform: translateY(16px) scale(.985); opacity: 0; transition: transform .35s var(--ease), opacity .35s var(--ease); --c: var(--accent); }
+.modal.open .modal__panel { transform: none; opacity: 1; }
+.modal__panel.is-rt1 { --c: var(--rt1); }
+.modal__panel.is-rt2 { --c: var(--rt2); }
+.modal__panel.is-rt3 { --c: var(--rt3); }
+.modal__panel::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); z-index: 3; }
+.modal__close { position: absolute; top: 14px; right: 14px; z-index: 4; width: 38px; height: 38px; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,.92); color: var(--ink); font-size: 1.3rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow); transition: transform .25s var(--ease), background .2s; }
+.modal__close:hover { transform: rotate(90deg); background: #fff; }
+.modal__media { background-color: #EDF0F5; border-right: 1px solid var(--line); overflow: hidden;
+  display: flex; align-items: center; justify-content: center; padding: 22px;
+  background-image: linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px); background-size: 28px 28px; }
+.modal__media img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: var(--shadow); }
+.modal__media.is-empty::before { content: "capture → ici"; color: var(--ink-faint); font-family: var(--f-mono); font-size: .8rem; }
+.modal__body { padding: clamp(28px, 3.5vw, 44px); overflow-y: auto; max-height: 86vh; display: flex; flex-direction: column; }
+.modal__tags { display: flex; gap: 6px; margin-bottom: 14px; }
+.modal__title { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.1; letter-spacing: -.015em; margin-bottom: 18px; }
+.modal__content { color: var(--ink-soft); font-size: 1rem; line-height: 1.75; }
+.modal__content h5 { font-size: .76rem; text-transform: uppercase; letter-spacing: .1em; color: var(--c); margin: 22px 0 8px; }
+.modal__content p { margin-bottom: 12px; }
+.modal__content ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.modal__content li { position: relative; padding-left: 22px; }
+.modal__content li::before { content: ""; position: absolute; left: 2px; top: .6em; width: 7px; height: 7px; border-radius: 2px; background: var(--c); transform: rotate(45deg); }
+.modal__links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); font-size: .9rem; }
+.modal__links a { color: var(--accent); font-weight: 600; transition: opacity .2s; }
+.modal__links a:hover { opacity: .65; }
+.card__more { display: none; }
+body.modal-open { overflow: hidden; }
+@media (max-width: 720px) {
+  .modal__panel { grid-template-columns: 1fr; max-height: 90vh; }
+  .modal__media { aspect-ratio: 16/10; border-right: 0; border-bottom: 1px solid var(--line); }
+  .modal__body { max-height: none; }
+}
+</style>
+<style>
+/* ===== Styles propres à la page SAÉ 3.02 ===== */
+.doc { max-width: 860px; }
+.back { display: inline-flex; gap: 8px; font-size: .86rem; color: var(--ink-soft); margin-bottom: 28px; transition: color .2s; }
+.back:hover { color: var(--accent); }
+.doc p { color: var(--ink-soft); margin-bottom: 14px; }
+.doc p strong, .doc li strong { color: var(--ink); font-weight: 600; }
+.doc code { font-family: var(--f-mono); font-size: .86em; background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; color: var(--ink); }
+.doc pre { background: #0E1726; color: #E6EAF2; border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; font-family: var(--f-mono); font-size: .8rem; line-height: 1.6; margin: 8px 0 6px; }
+.doc pre code { background: none; border: 0; padding: 0; color: inherit; font-size: inherit; }
+.doc .src { font-size: .76rem; color: var(--ink-faint); margin: 0 0 18px; }
+.doc .src a { color: var(--accent); }
+.doc ul.ticks { margin-bottom: 14px; }
+.doc a.inline { color: var(--accent); font-weight: 500; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.split { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 6px 0 10px; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; }
+.split th, .split td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.split th { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-faint); background: var(--paper); font-weight: 600; }
+.split tr:last-child td { border-bottom: 0; }
+.split td:first-child { color: var(--ink); font-weight: 600; white-space: nowrap; }
+.tablewrap { overflow-x: auto; }
+.note { background: color-mix(in srgb, var(--rt3) 7%, var(--paper-2)); border: 1px solid color-mix(in srgb, var(--rt3) 30%, var(--line)); border-radius: var(--radius-sm); padding: 14px 16px; font-size: .92rem; color: var(--ink-soft); margin: 18px 0; }
+.comp .part { margin-top: 30px; }
+.comp .part:first-of-type { margin-top: 0; }
+.comp h4.part__title { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--c); margin-bottom: 12px; }
+.comp h5 { font-size: .98rem; color: var(--ink); margin: 20px 0 8px; font-weight: 600; }
+.ac { display: block; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 10px; }
+.ac__code { font-family: var(--f-mono); font-size: .78rem; font-weight: 600; color: var(--c); }
+.ac__label { display: block; color: var(--ink); font-weight: 600; margin: 2px 0 6px; }
+.ac p { margin-bottom: 0; font-size: .94rem; }
+.ev { list-style: none; counter-reset: ev; display: flex; flex-direction: column; gap: 12px; }
+.ev > li { counter-increment: ev; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 13px 15px 13px 48px; position: relative; font-size: .92rem; color: var(--ink-soft); }
+.ev > li::before { content: counter(ev, decimal-leading-zero); position: absolute; left: 15px; top: 13px; font-family: var(--f-mono); font-size: .76rem; font-weight: 600; color: var(--c); }
+.ev a { color: var(--accent); font-weight: 600; word-break: break-word; }
+.ev .what { display: block; margin-top: 4px; }
+@media (max-width: 680px) { .split td:first-child { white-space: normal; } }
+</style>
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="nav" id="top">
+  <a class="nav__brand" href="index.html">
+    <span class="nav__mark">RT</span>
+    <span class="nav__name">Hussain AL SHAQSI</span>
+  </a>
+  <nav class="nav__links" aria-label="Navigation de la page">
+    <a href="#contexte">Contexte</a>
+    <a href="#c1">Client/serveur</a>
+    <a href="#c2">Algorithmes</a>
+    <a href="#c3">Travail en équipe</a>
+    <a href="index.html#projets" class="nav__cta">← Portfolio</a>
+  </nav>
+  <button class="nav__burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="hero reveal" style="padding-bottom: 40px;">
+  <a class="back mono" href="index.html#projets">← Retour aux SAÉ</a>
+  <div class="hero__meta mono">SAÉ 3.02 · BUT R&amp;T DEVCLOUD · SEMESTRE 3 · 2026–2027</div>
+  <h1 class="hero__title" style="font-size: clamp(2.4rem, 7vw, 4.6rem);">
+    <span class="hero__pre">Développer des applications communicantes</span>
+    Carrefour <span class="hero__last">intelligent</span>
+  </h1>
+  <p class="hero__lede">
+    Une simulation client/serveur en Python d'un carrefour de Colmar dont les feux donnent la priorité aux véhicules de secours.
+    Projet en binôme avec Adil EL BOUMAKHLOUFI. Cette page présente <strong>uniquement mon travail personnel</strong>, preuves Git à l'appui.
+  </p>
+  <div class="hero__actions">
+    <a class="btn btn--solid" href="#c1">Voir les compétences →</a>
+    <a class="btn btn--ghost" href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent" target="_blank" rel="noopener">Dépôt GitHub</a>
+  </div>
+  <ul class="hero__chips mono">
+    <li style="border-color: color-mix(in srgb, var(--rt3) 35%, var(--line));">RT3 · AC23.03</li>
+    <li style="border-color: color-mix(in srgb, var(--rt3) 35%, var(--line));">RT3 · AC13.03</li>
+    <li style="border-color: color-mix(in srgb, var(--rt3) 35%, var(--line));">RT3 · AC13.06</li>
+  </ul>
+</section>
+
+<section class="section reveal" id="contexte">
+  <div class="section__head"><span class="section__idx mono">00</span><h2 class="section__title">Le projet et ma place dedans</h2></div>
+  <div class="doc">
+    <p>
+      Le cahier des charges (V2.1, rédigé à deux en septembre) demande une maquette pour le 15 novembre 2026 : un <strong>serveur</strong> qui
+      possède l'état du carrefour (feux, véhicules, urgences) et un <strong>client PyQt6</strong> qui l'affiche en temps réel et envoie les demandes
+      de priorité. Les deux programmes communiquent par sockets TCP et doivent pouvoir tourner sur deux PC différents.
+    </p>
+    <p>
+      Nous nous sommes répartis le travail par côté de l'architecture : <strong>j'ai pris en charge le serveur et la couche réseau</strong>,
+      Adil l'interface graphique. Adil a ensuite fortement retravaillé l'ensemble du code début novembre. Le tableau ci-dessous sépare ce que
+      j'ai écrit de ce que je n'ai pas écrit, pour que chaque preuve de cette page soit vérifiable.
+    </p>
+
+    <div class="tablewrap">
+    <table class="split">
+      <thead><tr><th>Partie</th><th>Auteur</th><th>Fichiers / commits</th></tr></thead>
+      <tbody>
+        <tr><td>Serveur TCP multi-clients</td><td>Moi</td><td><code>network/server.py</code> — commit <code>0acb810</code></td></tr>
+        <tr><td>Protocole d'échange JSON</td><td>Moi</td><td><code>network/protocol.py</code> — <code>0acb810</code></td></tr>
+        <tr><td>Client réseau (1<sup>re</sup> version)</td><td>Moi</td><td><code>network/client.py</code> — <code>0acb810</code> (réécrit ensuite par Adil)</td></tr>
+        <tr><td>Point d'entrée du serveur</td><td>Moi</td><td><code>server_main.py</code> — <code>c98ea06</code></td></tr>
+        <tr><td>Branchement fenêtre ↔ réseau</td><td>Moi</td><td><code>main_window.py</code>, <code>control_panel.py</code>, <code>carrefour_widget.py</code> — <code>2512cd9</code>, fusion <code>20f4c2f</code></td></tr>
+        <tr><td>Modèle des véhicules, Dijkstra</td><td>Moi</td><td><code>core/vehicle.py</code>, <code>core/pathfinder.py</code> — <code>0acb810</code></td></tr>
+        <tr><td>Cycle des feux, journal SQLite</td><td>Généré avec une IA, adapté par moi</td><td><code>core/carrefour.py</code>, <code>core/feu.py</code>, <code>utils/logger.py</code> — <em>non présentés comme preuves</em></td></tr>
+        <tr><td>Interface PyQt6, tests, Docker, refonte de novembre</td><td>Adil</td><td><code>src/ui/*</code>, <code>tests/*</code>, <code>d1e0539</code>, <code>b12c8eb</code>…</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note">
+      <strong>Sur l'usage de l'IA.</strong> Le cycle des feux (<code>carrefour.py</code>, <code>feu.py</code>) et le journal SQLite (<code>logger.py</code>) ont été
+      produits avec l'aide d'une IA, puis relus et adaptés pour s'intégrer à mon serveur. Je sais expliquer comment mon serveur les utilise, mais je ne
+      m'appuie pas dessus pour attester une compétence. Sur le dépôt, j'ai signé 5 des 33 commits (identités <code>hussainshaqsi</code> et
+      <code>Hussain Al Shaqsi</code>) ; ils représentent environ 1 100 lignes ajoutées.
+    </div>
+
+    <p>
+      Les trois compétences ci-dessous relèvent toutes de <strong>RT3 — Créer des outils et applications informatiques pour les R&amp;T</strong>,
+      la compétence visée par cette SAÉ. Je n'ai pas retenu AC23.02 (l'interface est d'Adil), ni AC23.04 et AC23.05 (la base SQLite
+      vient de la partie assistée par IA).
+    </p>
+  </div>
+</section>
+
+<section class="section reveal" id="competences">
+  <div class="section__head"><span class="section__idx mono">01–03</span><h2 class="section__title">Compétences démontrées</h2></div>
+
+  <!-- ============================== COMPÉTENCE 1 ============================== -->
+  <article class="comp comp--rt3" id="c1">
+    <header class="comp__head">
+      <span class="comp__code mono">RT3 · N2</span>
+      <h3 class="comp__title">Programmer un serveur TCP multi-clients et son protocole d'échange</h3>
+      <p class="comp__tag mono">AC23.03 · server.py · protocol.py · client.py · server_main.py</p>
+    </header>
+
+    <div class="doc">
+    <div class="part">
+      <h4 class="part__title">1 · Contexte de la compétence &amp; situation professionnelle</h4>
+      <p>
+        Le serveur est le cœur du projet : c'est lui qui fait avancer la simulation, et le client ne fait qu'afficher ce qu'il reçoit.
+        Il devait accepter un ou plusieurs clients, leur envoyer l'état complet du carrefour environ toutes les 30 ms, et recevoir à tout moment
+        des commandes (« déclencher une urgence sur la voie Nord », « fin d'urgence »), sans que la simulation ne s'arrête pendant qu'il attend le réseau.
+      </p>
+      <p>
+        Ma responsabilité était d'écrire ce serveur, de définir le format des messages échangés et de fournir à Adil un client réseau qu'il puisse
+        brancher sur son interface. Pour la démonstration, le serveur tourne sur un PC et le client sur un autre ; il fallait donc que la
+        communication fonctionne réellement sur le réseau de la salle, pas seulement en local.
+      </p>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">2 · Apprentissages critiques (AC) ciblés</h4>
+      <div class="ac">
+        <span class="ac__code">AC23.03</span>
+        <span class="ac__label">Utiliser un protocole réseau pour programmer une application client/serveur</span>
+        <p>
+          J'ai utilisé TCP à travers l'API socket de Python (<code>socket()</code>, <code>bind()</code>, <code>listen()</code>, <code>accept()</code>,
+          <code>recv()</code>, <code>sendall()</code> côté serveur, <code>create_connection()</code> côté client) et j'ai défini au-dessus un petit
+          protocole applicatif : des objets JSON terminés par un saut de ligne, avec trois types de messages (<code>command</code>, <code>state</code>,
+          <code>error</code>). Le serveur gère plusieurs clients en parallèle grâce aux threads, et l'application a été testée entre deux machines.
+          C'est exactement ce que décrit l'AC : un protocole réseau mis en œuvre dans une application client/serveur que j'ai programmée.
+        </p>
+      </div>
+      <p>
+        Composantes essentielles mobilisées : <strong>CE3.04</strong> « en choisissant les outils de développement adaptés » (TCP plutôt qu'UDP,
+        threads, verrous) et, de façon incomplète, <strong>CE3.05</strong> « en intégrant les problématiques de sécurité » : c'est justement le point
+        faible de ma première version, détaillé plus bas.
+      </p>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">3 · Description réflexive de l'activité</h4>
+
+      <h5>Pourquoi TCP</h5>
+      <p>
+        UDP aurait pu suffire pour les états, puisqu'un état perdu est vite remplacé par le suivant. Mais les commandes, elles, ne doivent pas se perdre :
+        une demande d'urgence qui n'arrive pas, c'est précisément le cas qu'on veut éviter. Une seule connexion TCP pour tout apporte la fiabilité et
+        l'ordre des messages sans avoir à programmer d'acquittements. Le prix à payer, c'est que TCP est un <strong>flux d'octets</strong> :
+        il ne connaît pas la notion de « message ».
+      </p>
+
+      <h5>Le vrai problème : découper le flux en messages</h5>
+      <p>
+        Un <code>recv(4096)</code> peut renvoyer un demi-message, ou trois messages collés. Si l'on fait <code>json.loads(data)</code> directement, ça marche
+        en local la plupart du temps et ça casse dès que les messages sont gros ou rapprochés. J'ai donc choisi un délimiteur : chaque message JSON est suivi
+        de <code>\n</code>. Ce choix est sûr parce que <code>json.dumps</code> n'écrit jamais de vrai saut de ligne à l'intérieur d'une chaîne (il l'échappe
+        en <code>\\n</code>). Le récepteur accumule les octets dans un tampon et ne décode que les lignes complètes :
+      </p>
+<pre><code>def decode_messages(buffer):
+    messages = []
+    while b"\n" in buffer:
+        morceaux = buffer.split(b"\n", 1)
+        raw_message = morceaux[0]
+        buffer = morceaux[1]
+        if raw_message.strip() == b"":
+            continue
+        message = json.loads(raw_message.decode("utf-8"))
+        messages.append(message)
+    return messages, buffer</code></pre>
+      <p class="src mono">Extrait de <a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/network/protocol.py#L9-L19" target="_blank" rel="noopener">network/protocol.py @ 0acb810</a></p>
+      <p>
+        La fonction renvoie aussi le reste du tampon, qui sera complété au prochain <code>recv</code>. Je découpe sur les <strong>octets</strong> avant de décoder
+        en UTF-8 : comme ça, un caractère accentué coupé en deux entre deux <code>recv</code> ne provoque pas d'erreur de décodage.
+      </p>
+
+      <h5>Organisation du serveur en threads</h5>
+      <p>Le serveur lance trois sortes de threads :</p>
+      <ul class="ticks">
+        <li><code>accept_loop</code> attend les connexions avec <code>accept()</code> et démarre un thread par client ;</li>
+        <li><code>handle_client</code> lit les commandes d'un client avec <code>recv()</code> et les applique ;</li>
+        <li><code>simulation_loop</code> fait avancer feux et véhicules à trois cadences différentes (500 ms, 30 ms, 1,2 s), mesurées avec
+          <code>time.monotonic()</code>, puis diffuse l'état à tous les clients.</li>
+      </ul>
+<pre><code>self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+self.server_socket.bind((self.host, self.port))
+self.server_socket.listen()
+self.server_socket.settimeout(1.0)</code></pre>
+      <p class="src mono">Extrait de <a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/network/server.py#L50-L67" target="_blank" rel="noopener">network/server.py @ 0acb810, start()</a></p>
+      <p>
+        Le <code>settimeout(1.0)</code> est là pour l'arrêt : sans lui, <code>accept()</code> bloque indéfiniment et le thread ne voit jamais que
+        <code>self.running</code> est passé à <code>False</code>. Avec le délai, il se réveille chaque seconde, attrape <code>socket.timeout</code> et
+        vérifie s'il doit continuer. <code>SO_REUSEADDR</code> évite l'erreur « Address already in use » quand on relance le serveur juste après l'avoir
+        fermé (le port reste quelques instants en TIME_WAIT). Enfin, le serveur écoute sur <code>0.0.0.0</code>, c'est-à-dire sur toutes ses
+        interfaces, sinon le second PC ne pourrait pas le joindre.
+      </p>
+
+      <h5>Partager des données entre threads</h5>
+      <p>
+        Le carrefour est modifié par le thread de simulation et par les threads clients (une urgence arrive pendant un tick) : je l'ai protégé par
+        <code>carrefour_lock</code>. La liste des sockets clients est modifiée par <code>accept_loop</code> et lue par la diffusion : elle a son propre
+        <code>clients_lock</code>. J'ai fait attention à une chose : ne jamais garder un verrou pendant un envoi réseau. La simulation copie l'état sous le
+        verrou, le relâche, <em>puis</em> envoie ; la diffusion copie la liste des clients sous le verrou puis envoie hors verrou. Un client lent ne bloque
+        donc pas la simulation.
+      </p>
+
+      <h5>Le client et la fenêtre</h5>
+      <p>
+        Côté client, j'ai écrit une première version de <code>NetworkClient</code> : un thread qui se connecte avec <code>create_connection()</code>, se
+        reconnecte tout seul toutes les 2 s si le serveur est absent, et ne garde que <strong>le dernier état reçu</strong>. Pour l'affichage, garder une file
+        de 30 états par seconde n'aurait servi à rien : seul l'état actuel compte. Le 14 octobre, j'ai branché ce client sur la fenêtre d'Adil
+        (commit <code>2512cd9</code>) : un <code>QTimer</code> de 30 ms appelle <code>consume_latest_state()</code> dans le thread graphique. J'ai fait
+        ce choix parce que PyQt interdit de modifier un widget depuis un autre thread ; le thread réseau ne touche donc jamais à l'interface.
+      </p>
+
+      <h5>Difficultés rencontrées</h5>
+      <p>
+        <strong>Les imports.</strong> Lancer <code>python server_main.py</code> depuis la racine échouait sur les imports relatifs
+        (<code>from ..core.carrefour import Carrefour</code>) : ils ne fonctionnent que si le fichier est chargé comme partie d'un paquet. Dans
+        <code>c98ea06</code> j'ai ajouté la racine au <code>sys.path</code> et remplacé ces imports par des imports absolus. Ça a marché, mais c'était un
+        contournement ; la vraie solution (un dossier <code>src/</code> en paquet et des imports <code>src.…</code>) a été faite ensuite par Adil.
+      </p>
+      <p>
+        <strong>Le test sur deux PC.</strong> Pour passer du test local au test entre deux machines, il fallait que le client et le serveur
+        s'accordent. Le diff de <code>2512cd9</code> le montre : la configuration du client pointait sur <code>127.0.0.1:8765</code>, des valeurs de la
+        maquette d'interface qui ne correspondaient pas à mon serveur (port 5000). J'ai mis l'adresse IPv4 du PC serveur (<code>10.128.214.143</code>) et le
+        port 5000, et l'échange entre les deux PC a fonctionné. Un client et un serveur qui « marchent » chacun de leur côté ne communiquent que si
+        l'adresse, le port <em>et</em> le format des messages concordent.
+      </p>
+
+      <h5>Ce que la relecture de mon code m'a appris</h5>
+      <p>
+        En novembre, Adil a renforcé mon serveur (commit <code>d1e0539</code>). Ces modifications sont les siennes, mais les comprendre m'a montré les
+        faiblesses de ma version :
+      </p>
+      <ul class="ticks">
+        <li>j'utilisais <code>lock.acquire()</code> / <code>release()</code> sans <code>try/finally</code> : une exception entre les deux laisse le verrou pris
+          et bloque tout le serveur. Le bloc <code>with lock:</code> règle ce problème ;</li>
+        <li>un JSON invalide levait une <code>ValueError</code> que je n'attrapais pas, le thread du client s'arrêtait sans le retirer de la liste ;</li>
+        <li>le tampon n'avait pas de taille maximale : un client qui envoie des octets sans jamais de <code>\n</code> peut remplir la mémoire ;</li>
+        <li>deux threads pouvaient appeler <code>sendall()</code> sur la même socket en même temps (la diffusion et un message d'erreur), avec un risque
+          de messages entremêlés. Adil a ajouté un verrou par client.</li>
+      </ul>
+      <p>
+        Tous ces défauts viennent du fait que j'ai testé le cas où tout se passe bien. Si je refaisais le projet, j'écrirais dès le départ des tests qui
+        envoient volontairement des messages fragmentés, invalides ou trop longs, je validerais chaque champ reçu, et j'étudierais <code>selectors</code>
+        ou <code>asyncio</code> pour éviter un thread par client si le nombre de clients augmentait.
+      </p>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">4 · Liste des traces et des preuves (vérifiables)</h4>
+      <ol class="ev">
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/commit/0acb8109f048f2f0af2618836c7057127c4ffbb3" target="_blank" rel="noopener">Commit 0acb810 — « Add core and network files » (5 oct. 2026)</a>
+          <span class="what">Montre l'ajout de <code>network/server.py</code>, <code>protocol.py</code> et <code>client.py</code> sous mon nom. Prouve que la couche réseau est mon travail initial ; base de toute la compétence.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/network/server.py#L50-L67" target="_blank" rel="noopener">server.py L50-67 — socket, bind, listen, threads</a>
+          <span class="what">Création de la socket d'écoute et lancement des threads. Prouve l'usage direct de l'API socket TCP (AC23.03).</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/network/server.py#L102-L145" target="_blank" rel="noopener">server.py L102-145 — accept_loop et handle_client</a>
+          <span class="what">Un thread par client, lecture par <code>recv()</code> et reconstitution des messages. Prouve la gestion multi-clients.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/network/server.py#L169-L214" target="_blank" rel="noopener">server.py L169-214 — simulation_loop et broadcast_state</a>
+          <span class="what">Cadences avec <code>time.monotonic()</code>, copie sous verrou puis envoi hors verrou. Prouve la synchronisation entre threads.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/network/protocol.py" target="_blank" rel="noopener">protocol.py — encodage/décodage JSON délimité</a>
+          <span class="what">Le protocole applicatif que j'ai défini. Prouve la réponse au découpage d'un flux TCP.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/network/client.py#L59-L105" target="_blank" rel="noopener">client.py L59-105 — connexion, reconnexion, réception</a>
+          <span class="what">Ma première version du client. Prouve que j'ai programmé les deux extrémités de l'échange.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/commit/c98ea06ce4221c3c14ce782df4cadf75ec057518" target="_blank" rel="noopener">Commit c98ea06 — « ajout server » (14 oct.)</a>
+          <span class="what">Création de <code>server_main.py</code> et correction des imports. Prouve la mise en service du serveur et la difficulté des imports décrite plus haut.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/commit/2512cd9cb1feee61ad4b165e6a20208e9d96df26" target="_blank" rel="noopener">Commit 2512cd9 (14 oct.) — branchement de la fenêtre et configuration réseau</a>
+          <span class="what">Le diff de <code>config/settings.json</code> passe de <code>127.0.0.1:8765</code> à <code>10.128.214.143:5000</code>, et <code>main_window.py</code> relie le <code>QTimer</code> au client. Prouve le test entre deux PC.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/main/src/network/server.py" target="_blank" rel="noopener">server.py dans la version actuelle</a>
+          <span class="what">Avec <code>git blame</code>, environ 170 des 292 lignes sont encore issues de mon commit. Montre que ma structure (threads, boucles, diffusion) a été conservée par l'équipe.</span></li>
+      </ol>
+    </div>
+    </div>
+  </article>
+
+  <!-- ============================== COMPÉTENCE 2 ============================== -->
+  <article class="comp comp--rt3" id="c2">
+    <header class="comp__head">
+      <span class="comp__code mono">RT3 · N1</span>
+      <h3 class="comp__title">Traduire des algorithmes : déplacement des véhicules et plus court chemin (Dijkstra)</h3>
+      <p class="comp__tag mono">AC13.03 · vehicle.py · pathfinder.py</p>
+    </header>
+
+    <div class="doc">
+    <div class="part">
+      <h4 class="part__title">1 · Contexte de la compétence &amp; situation professionnelle</h4>
+      <p>
+        Pour que la maquette soit crédible, les voitures devaient avancer, s'arrêter au feu rouge sans se rentrer dedans, tourner à droite ou à gauche,
+        puis sortir du carrefour. Le cahier des charges demande aussi de « calculer le trajet optimal » d'un véhicule de secours. Ces deux besoins sont
+        des problèmes d'algorithmique avant d'être des problèmes de code.
+      </p>
+      <p>
+        J'ai écrit la classe <code>Vehicule</code> (le modèle de déplacement) et la classe <code>Pathfinder</code> (Dijkstra). Le serveur appelle
+        <code>Vehicule</code> à chaque tick de 30 ms, et chaque véhicule est envoyé au client grâce à sa méthode <code>to_dict()</code>.
+      </p>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">2 · Apprentissages critiques (AC) ciblés</h4>
+      <div class="ac">
+        <span class="ac__code">AC13.03</span>
+        <span class="ac__label">Traduire un algorithme, dans un langage et pour un environnement donné</span>
+        <p>
+          J'ai traduit en Python deux algorithmes : un modèle de suivi de véhicules (contraintes de position appliquées à chaque pas) et l'algorithme de
+          Dijkstra sur un graphe pondéré. Il s'agit d'un AC de niveau 1 que je consolide ici dans un contexte plus exigeant : le code tourne en temps réel
+          dans un thread serveur et son résultat doit être sérialisable pour le réseau.
+        </p>
+      </div>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">3 · Description réflexive de l'activité</h4>
+
+      <h5>Un modèle en une dimension</h5>
+      <p>
+        Plutôt que de gérer des coordonnées (x, y), j'ai représenté chaque véhicule par <strong>une seule position</strong> le long de sa voie : il part de
+        −180, la ligne d'arrêt est à −70, le centre à 0 et il sort après 300. Avancer revient alors à augmenter un nombre, et toutes les règles deviennent
+        des <code>min()</code> : on calcule la position souhaitée, puis on la limite par chaque contrainte.
+      </p>
+<pre><code>nouvelle_pos = self.position + self.vitesse
+
+if feu.etat == "ROUGE" or feu.etat == "ORANGE":
+    if self.position &lt;= self.LIGNE_ARRET:
+        nouvelle_pos = min(nouvelle_pos, self.LIGNE_ARRET)
+
+if devant is not None:
+    limite = devant.position - self.LONGUEUR - self.ECART_MIN
+    nouvelle_pos = min(nouvelle_pos, limite)</code></pre>
+      <p class="src mono">Extrait de <a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/core/vehicle.py#L42-L62" target="_blank" rel="noopener">core/vehicle.py @ 0acb810, avancer()</a></p>
+      <p>
+        Le test <code>self.position &lt;= LIGNE_ARRET</code> est important : une voiture déjà engagée quand le feu passe à l'orange doit finir de traverser,
+        sinon elle resterait bloquée au milieu du carrefour. Pour la file d'attente, chaque voiture ne regarde que celle de devant ; c'est pour ça que le
+        serveur trie les véhicules d'une voie du plus avancé au moins avancé avant de les déplacer.
+      </p>
+      <p>
+        Les virages utilisent trois dictionnaires (<code>VOIE_A_DROITE</code>, <code>VOIE_A_GAUCHE</code>, <code>VOIE_EN_FACE</code>) : arrivée au point de
+        virage, la voiture change de voie et sa position est recalée sur le nouvel axe. Pour l'affichage et la détection de chevauchement,
+        <code>rectangle()</code> projette la position 1D en rectangle 2D selon la voie, et <code>touche()</code> teste l'intersection de deux rectangles
+        alignés sur les axes.
+      </p>
+
+      <h5>Dijkstra</h5>
+      <p>
+        Pour le trajet, j'ai modélisé le carrefour comme un graphe : les nœuds sont les voies, les poids sont des coûts (tourner coûte 1, traverser tout droit
+        coûte 2 dans ma première version). J'ai implémenté Dijkstra moi-même, sans NetworkX (pourtant évoqué dans le cahier des charges) :
+      </p>
+<pre><code>while len(a_visiter) > 0:
+    voie = a_visiter[0]
+    for autre in a_visiter:                 # nœud non visité le plus proche
+        if distances[autre] &lt; distances[voie]:
+            voie = autre
+    a_visiter.remove(voie)
+    if voie == arrivee:
+        break                               # sa distance est définitive
+    for suivante in self.graph[voie]:       # relâchement des arêtes
+        nouvelle_distance = distances[voie] + self.graph[voie][suivante]
+        if nouvelle_distance &lt; distances[suivante]:
+            distances[suivante] = nouvelle_distance
+            precedents[suivante] = voie</code></pre>
+      <p class="src mono">Extrait de <a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/core/pathfinder.py#L10-L41" target="_blank" rel="noopener">core/pathfinder.py @ 0acb810, trouver_trajet()</a> · commentaires ajoutés pour la lecture</p>
+      <p>
+        L'arrêt anticipé est correct parce que, dans Dijkstra, un nœud retiré de la liste a sa distance définitive (les poids sont positifs). Le chemin est
+        ensuite reconstruit à l'envers grâce au dictionnaire <code>precedents</code>. La recherche du minimum est linéaire, donc l'algorithme est en
+        O(V²) : avec quatre nœuds c'est négligeable, mais sur un vrai réseau routier j'utiliserais une file de priorité (<code>heapq</code>), voire A*.
+      </p>
+
+      <h5>Ce qui n'allait pas, et ce que j'en retiens</h5>
+      <ul class="ticks">
+        <li>J'initialisais les distances à <code>999999</code> au lieu de l'infini. Ça marche ici, mais c'est une valeur arbitraire qui peut être dépassée.</li>
+        <li>Si l'arrivée était inaccessible, la reconstruction du chemin levait une <code>KeyError</code> peu parlante au lieu d'une erreur claire.</li>
+        <li>Surtout, dans ma version, <strong>le serveur n'appelait pas <code>Pathfinder</code></strong> : l'algorithme existait mais ne servait à rien.
+          C'est Adil qui l'a branché en novembre (<code>d1e0539</code>), sur un graphe dont les coûts dépendent du nombre de voitures en attente, et qui a
+          corrigé les deux points précédents.</li>
+      </ul>
+      <p>
+        La leçon principale : un algorithme juste mais isolé n'est pas une fonctionnalité. J'aurais dû partir du besoin (« quelle entrée doit prendre
+        l'ambulance ? »), écrire le test correspondant, puis l'algorithme, et non l'inverse. Je retiens aussi que mon modèle 1D, très simple, a tenu jusqu'à
+        la version finale : Adil l'a étendu (virages animés, identifiants numérotés) sans changer son principe.
+      </p>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">4 · Liste des traces et des preuves (vérifiables)</h4>
+      <ol class="ev">
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/core/vehicle.py" target="_blank" rel="noopener">core/vehicle.py @ 0acb810</a>
+          <span class="what">Le modèle complet tel que je l'ai écrit (constantes, <code>avancer</code>, <code>tourner</code>, <code>rectangle</code>, <code>touche</code>, <code>to_dict</code>). Prouve la traduction du modèle de déplacement.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/core/pathfinder.py" target="_blank" rel="noopener">core/pathfinder.py @ 0acb810</a>
+          <span class="what">Mon implémentation de Dijkstra. Prouve la traduction d'un algorithme de graphe (AC13.03).</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/0acb8109f048f2f0af2618836c7057127c4ffbb3/core/vehicle.py#L91-L113" target="_blank" rel="noopener">vehicle.py L91-113 — rectangle() et touche()</a>
+          <span class="what">Projection 1D → 2D et test de chevauchement. Prouve que le modèle sert aussi au dessin et aux collisions.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/2512cd9cb1feee61ad4b165e6a20208e9d96df26/src/ui/carrefour_widget.py#L5-L36" target="_blank" rel="noopener">carrefour_widget.py @ 2512cd9 — rectangle_vehicule()</a>
+          <span class="what">J'ai reproduit la même projection côté client, avec le commentaire « le client ne doit pas importer le code du serveur ». Prouve que j'ai réutilisé l'algorithme dans un autre environnement.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/blob/main/src/core/pathfinder.py" target="_blank" rel="noopener">pathfinder.py dans la version actuelle</a>
+          <span class="what">Avec <code>git blame</code>, 43 des 49 lignes viennent encore de mon commit. Montre que mon algorithme est celui utilisé dans la version finale.</span></li>
+      </ol>
+    </div>
+    </div>
+  </article>
+
+  <!-- ============================== COMPÉTENCE 3 ============================== -->
+  <article class="comp comp--rt3" id="c3">
+    <header class="comp__head">
+      <span class="comp__code mono">RT3 · N1</span>
+      <h3 class="comp__title">Développer à deux avec Git et GitHub : branches, pull request, résolution de conflit</h3>
+      <p class="comp__tag mono">AC13.06 · branches Hussain / Hussain-server · PR #1 · fusion 20f4c2f</p>
+    </header>
+
+    <div class="doc">
+    <div class="part">
+      <h4 class="part__title">1 · Contexte de la compétence &amp; situation professionnelle</h4>
+      <p>
+        Le dépôt est hébergé sur le compte d'Adil et partagé avec notre enseignant. Pendant qu'Adil faisait évoluer l'interface sur <code>main</code>,
+        je travaillais sur le serveur dans mes propres branches. À un moment, mon travail et le sien devaient se rejoindre dans les mêmes fichiers :
+        <code>main_window.py</code> devait à la fois contenir sa logique d'interface et mon branchement réseau. Il fallait intégrer nos deux versions
+        sans perdre le travail de l'autre.
+      </p>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">2 · Apprentissages critiques (AC) ciblés</h4>
+      <div class="ac">
+        <span class="ac__code">AC13.06</span>
+        <span class="ac__label">S'intégrer dans un environnement propice au développement et au travail collaboratif</span>
+        <p>
+          J'ai utilisé des branches dédiées, une pull request pour faire entrer mon code dans <code>main</code>, et j'ai résolu à la main un conflit de fusion
+          qui touchait le code d'Adil et le mien. C'est un AC de niveau 1 ; je l'inclus parce que l'historique Git en donne une preuve directe, et parce que
+          mes erreurs dans ce domaine sont ce qui m'a le plus appris.
+        </p>
+      </div>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">3 · Description réflexive de l'activité</h4>
+      <p>
+        <strong>Branches et pull request.</strong> J'ai poussé la couche réseau et le modèle sur une branche <code>Hussain</code>, intégrée dans
+        <code>main</code> par la pull request #1 le 7 octobre. Travailler sur une branche permettait à Adil de continuer sur <code>main</code> sans être
+        bloqué par du code serveur pas encore terminé.
+      </p>
+      <p>
+        <strong>Une erreur instructive.</strong> Le même jour, j'ai poussé sur la même branche un commit qui déplaçait les dossiers dans <code>src/</code>
+        (<code>867a8f8</code>). Mais la pull request avait été fusionnée un quart d'heure plus tôt : ce commit n'est jamais arrivé dans <code>main</code>.
+        J'ai compris qu'une pull request fusionnée est terminée et que les commits suivants sur la branche demandent une nouvelle PR. La réorganisation
+        en <code>src/</code> a finalement été refaite par Adil une semaine plus tard (<code>b12c8eb</code>).
+      </p>
+      <p>
+        <strong>Le conflit.</strong> Le 14 octobre, sur la branche <code>Hussain-server</code>, j'avais ajouté dans <code>main_window.py</code> la création du
+        <code>NetworkClient</code>, un <code>QTimer</code> et deux méthodes <code>on_emergency</code> / <code>on_clear_emergency</code>. Entre-temps, Adil
+        avait changé l'architecture de la fenêtre sur <code>main</code> : un signal unique <code>command_requested</code>, une zone défilante et un
+        historique. En fusionnant <code>main</code> dans ma branche (<code>20f4c2f</code>), Git a signalé un conflit. Je n'ai pas choisi « une version » :
+        j'ai gardé la structure d'Adil et j'y ai raccordé mon client, en remplaçant mes deux méthodes par une méthode <code>envoyer_commande(action, params)</code>
+        branchée sur son signal, et en déplaçant mon code d'affichage dans sa méthode <code>afficher_etat</code>.
+      </p>
+<pre><code>from PyQt6.QtCore import QTimer, pyqtSignal      # import fusionné : son signal + mon timer
+...
+self.command_requested.connect(self.envoyer_commande)
+
+def envoyer_commande(self, action, params):
+    # Le serveur attend la voie dans le champ "road"
+    self.client.send_command(action, params.get("road"))</code></pre>
+      <p class="src mono">Extrait de la résolution dans <a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/commit/20f4c2fa9b520f2439bc4e90222b0e5cf4f1ab96" target="_blank" rel="noopener">20f4c2f</a> · premier commentaire ajouté pour la lecture</p>
+      <p>
+        Pour résoudre ce conflit, il fallait comprendre le code de l'autre : savoir que son signal transportait un dictionnaire de paramètres, et que mon
+        serveur attendait la voie dans le champ <code>road</code>. Résoudre un conflit, ce n'est pas trier des lignes, c'est accorder deux conceptions.
+      </p>
+      <p>
+        <strong>Ce que je ferais différemment.</strong> Mes messages de commit sont parfois inutilisables (« sfds » pour un commit de 137 lignes) et j'ai
+        commité sous deux identités différentes (adresse UHA et Gmail) faute d'avoir configuré <code>git config user.email</code> sur tous mes postes.
+        Avec 5 commits sur 33, je poussais aussi trop gros, trop rarement : <code>0acb810</code> ajoute 883 lignes d'un coup, ce qui rend la relecture
+        difficile pour mon binôme. Aujourd'hui je ferais des commits petits et explicites, une PR par fonctionnalité, et je fusionnerais <code>main</code>
+        dans ma branche plus souvent pour que les conflits restent petits.
+      </p>
+    </div>
+
+    <div class="part">
+      <h4 class="part__title">4 · Liste des traces et des preuves (vérifiables)</h4>
+      <ol class="ev">
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/pull/1" target="_blank" rel="noopener">Pull request #1 — Patpat200/Hussain → main</a>
+          <span class="what">Fusion de ma branche dans <code>main</code> (commit <code>ac5e3c9</code>, 7 oct.). Prouve l'usage d'un flux branche → PR.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/commit/867a8f8f3b26398d6f74887555d2660838a99147" target="_blank" rel="noopener">Commit 867a8f8 — « changement de repetoires »</a>
+          <span class="what">Visible uniquement sur la branche <code>Hussain</code>. Prouve l'erreur de cycle de vie de PR analysée plus haut.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/commit/20f4c2fa9b520f2439bc4e90222b0e5cf4f1ab96" target="_blank" rel="noopener">Commit 20f4c2f — fusion de main dans Hussain-server</a>
+          <span class="what">Le diff combiné (<code>git show --cc 20f4c2f</code>) montre les lignes venant de chaque parent et ma résolution. Prouve la résolution de conflit (AC13.06).</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/tree/Hussain-server" target="_blank" rel="noopener">Branche Hussain-server</a>
+          <span class="what">Contient <code>c98ea06</code>, <code>2512cd9</code> et la fusion. Prouve l'organisation de mon travail en branche dédiée.</span></li>
+        <li><a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent/commits/main" target="_blank" rel="noopener">Historique de main</a>
+          <span class="what">On y retrouve mes commits intégrés (<code>0acb810</code>, <code>c98ea06</code>, <code>2512cd9</code>, <code>20f4c2f</code>). Prouve que mon travail a bien été intégré au projet commun.</span></li>
+      </ol>
+    </div>
+    </div>
+  </article>
+</section>
+
+<section class="section reveal" id="bilan">
+  <div class="section__head"><span class="section__idx mono">04</span><h2 class="section__title">Bilan</h2></div>
+  <div class="bilan">
+    <p class="lead">Ce que je retiens surtout de cette SAÉ, c'est la différence entre un programme qui marche et un programme qui résiste.</p>
+    <p>
+      Mon serveur fonctionnait entre deux PC dès la mi-octobre, mais la relecture de novembre a montré qu'il supposait des clients bien élevés. J'ai appris
+      à raisonner en flux d'octets plutôt qu'en messages, à penser à l'arrêt propre des threads, et à ne jamais garder un verrou pendant une opération réseau.
+      Côté méthode, j'ai compris qu'un algorithme non branché ne compte pas, et que Git est un outil de communication avec son binôme autant qu'un outil de
+      sauvegarde. Pour la suite de la SAÉ (juin 2027), je veux écrire mes propres tests réseau et valider chaque message reçu dès la première version.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="footer__links mono">
+    <a href="index.html">Portfolio</a>
+    <a href="https://github.com/Patpat200/SAE-3.02-Carrefour-intelligent" target="_blank" rel="noopener">Dépôt du projet</a>
+    <a href="https://github.com/hussainshaqsi" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer__base mono">© 2026 Hussain AL SHAQSI · BUT Réseaux &amp; Télécommunications · SAÉ 3.02</div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: "0px 0px -5% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else { reveals.forEach(function (el) { el.classList.add("in"); }); }
+  var burger = document.querySelector(".nav__burger"), links = document.querySelector(".nav__links");
+  if (burger && links) {
+    burger.addEventListener("click", function () { var open = links.classList.toggle("open"); burger.setAttribute("aria-expanded", open ? "true" : "false"); });
+    links.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { links.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); }); });
+  }
+})();
+</script>
+</body>
+</html>
