@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portfolio — Hussain AL SHAQSI · BUT Réseaux & Télécommunications</title>
-<meta name="description" content="E-portfolio S2 — BUT Réseaux & Télécommunications. Attestation des compétences RT1 Administrer, RT2 Connecter, RT3 Créer." />
+<title>Portfolio — Hussain AL SHAQSI · BUT Réseaux & Télécommunications · Recherche de stage</title>
+<meta name="description" content="Étudiant en BUT Réseaux & Télécommunications (parcours DevCloud) à l'IUT de Colmar, en recherche d'un stage de 8 semaines du 5 avril au 4 juin 2027 : réseaux, systèmes, cloud ou support informatique." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -82,6 +82,22 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)
 .hero__chips li:nth-child(1) { border-color: color-mix(in srgb, var(--rt1) 35%, var(--line)); }
 .hero__chips li:nth-child(2) { border-color: color-mix(in srgb, var(--rt2) 35%, var(--line)); }
 .hero__chips li:nth-child(3) { border-color: color-mix(in srgb, var(--rt3) 35%, var(--line)); }
+.dispo { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 14px; max-width: 62ch; margin-top: 28px; padding: 14px 18px; background: var(--paper-2); border: 1px solid color-mix(in srgb, var(--rt2) 40%, var(--line)); border-radius: var(--radius-sm); box-shadow: var(--shadow); font-size: .95rem; color: var(--ink-soft); }
+.dispo__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--rt2); box-shadow: 0 0 0 4px color-mix(in srgb, var(--rt2) 22%, transparent); flex-shrink: 0; margin-top: .45em; }
+.dispo strong { color: var(--ink); font-weight: 600; }
+
+.skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.skill { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow); --c: var(--accent); border-top: 4px solid var(--c); }
+.skill--rt1 { --c: var(--rt1); } .skill--rt2 { --c: var(--rt2); } .skill--rt3 { --c: var(--rt3); } .skill--ink { --c: var(--ink); }
+.skill h3 { font-family: var(--f-display); font-weight: 500; font-size: 1.2rem; margin-bottom: 12px; }
+.skill .ticks li { font-size: .94rem; }
+.subhead { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-faint); margin: 46px 0 16px; font-weight: 600; }
+.projlist { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; }
+.projlist__item { background: var(--paper-2); border: 1px solid var(--line); border-left: 3px solid var(--c, var(--accent)); border-radius: var(--radius-sm); padding: 14px 16px; }
+.projlist__item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+.projlist__item p { font-size: .86rem; color: var(--ink-soft); }
+.projlist__item a { color: var(--accent); font-weight: 600; font-size: .84rem; display: inline-block; margin-top: 6px; }
+@media (max-width: 760px) { .skills { grid-template-columns: 1fr; } }
 
 .btn { display: inline-flex; align-items: center; gap: 8px; font-size: .94rem; font-weight: 500; padding: 11px 20px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; transition: transform .2s var(--ease), background .2s, border-color .2s, box-shadow .2s; }
 .btn--solid { background: var(--ink); color: #fff; }
@@ -224,6 +240,7 @@ body.modal-open { overflow: hidden; }
   </a>
   <nav class="nav__links" aria-label="Navigation principale">
     <a href="#profil">Profil</a>
+    <a href="#savoir-faire">Savoir-faire</a>
     <a href="#competences">Compétences</a>
     <a href="#projets">SAÉ &amp; Projets</a>
     <a href="#bilan">Bilan</a>
@@ -235,21 +252,25 @@ body.modal-open { overflow: hidden; }
 <main>
 
 <section class="hero reveal" id="hero">
-  <div class="hero__meta mono">E-PORTFOLIO · SEMESTRE 2 · 2025–2026</div>
+  <div class="hero__meta mono">E-PORTFOLIO · BUT R&amp;T · PARCOURS DEVCLOUD · 2026–2027</div>
   <h1 class="hero__title">
     <span class="hero__pre">Portfolio de</span>
     Hussain<br><span class="hero__last">AL SHAQSI</span>
   </h1>
   <p class="hero__lede">
-    Étudiant en <strong>BUT Réseaux&nbsp;&amp;&nbsp;Télécommunications</strong> à l'IUT de Colmar.
-    Ce portfolio atteste de mes <strong>trois compétences</strong> (Administrer, Connecter, Créer)
-    développées au fil des ressources et des SAÉ de l'année.
+    Étudiant en <strong>BUT Réseaux&nbsp;&amp;&nbsp;Télécommunications</strong> à l'IUT de Colmar, parcours
+    <strong>Développement système et cloud</strong>. Ce portfolio présente mes <strong>trois compétences</strong>
+    (Administrer, Connecter, Créer) et les SAÉ qui les prouvent.
+  </p>
+  <p class="dispo">
+    <span class="dispo__dot" aria-hidden="true"></span>
+    <span><strong>Recherche de stage</strong> · 8 semaines, du <strong>lundi 5 avril au vendredi 4 juin 2027</strong> · réseaux, systèmes, cloud ou support informatique</span>
   </p>
   <div class="hero__actions">
-    <a class="btn btn--solid" href="#competences">Voir les compétences →</a>
-    <a class="btn btn--ghost" href="https://github.com/hussainshaqsi" target="_blank" rel="noopener">GitHub</a>
-    <a class="btn btn--ghost" href="https://www.linkedin.com/in/hussain-al-shaqsi" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn btn--solid" href="mailto:alshaqsihussain@gmail.com?subject=Proposition%20de%20stage%20(avril%E2%80%93juin%202027)">Me proposer un stage →</a>
     <a class="btn btn--ghost" href="assets/CV_alshaqsi_hussain.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    <a class="btn btn--ghost" href="https://www.linkedin.com/in/hussain-al-shaqsi" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn btn--ghost" href="https://github.com/hussainshaqsi" target="_blank" rel="noopener">GitHub</a>
   </div>
   <ul class="hero__chips mono">
     <li>RT1 · Administrer</li>
@@ -264,21 +285,91 @@ body.modal-open { overflow: hidden; }
     <figure class="profil__photo"><img src="cvpfp.png" alt="Hussain AL SHAQSI" /></figure>
     <div class="profil__text">
       <p class="lead">Étudiant en BUT Réseaux &amp; Télécommunications à l'IUT de Colmar, je suis passionné par les réseaux, les systèmes et le cloud. Mon parcours international de l'International School of Oman jusqu'aux IUT français m'a appris à m'adapter et à apprendre vite, en arabe, en anglais (C2) et en français.</p>
-      <p>Avant le BUT, j'ai suivi un diplôme universitaire de préparation linguistique et scientifique à Limoges, puis une première année de Licence Mathématiques/Informatique à Strasbourg. Un stage de support informatique chez Biyaq Oil Field Services (Mascate) m'a confronté au terrain : assistance aux utilisateurs, diagnostic de pannes, configuration d'équipements et rédaction de documentation technique. Je consolide aujourd'hui ces bases en réseaux, transmission et programmation, avec pour objectif une alternance en réseaux, systèmes ou support informatique.</p>
+      <p>Avant le BUT, j'ai suivi un diplôme universitaire de préparation linguistique et scientifique à Limoges, puis une première année de Licence Mathématiques/Informatique à Strasbourg. Un stage de support informatique chez Biyaq Oil Field Services (Mascate) m'a confronté au terrain : assistance aux utilisateurs, diagnostic de pannes, configuration d'équipements et rédaction de documentation technique. Aujourd'hui en 2ᵉ année, parcours DevCloud, je travaille sur le déploiement d'applications (Docker, Kubernetes, CI/CD) et l'automatisation d'infrastructures cloud (Terraform, Ansible), en plus des réseaux et de la programmation.</p>
       <div class="profil__facts">
-        <div><span class="mono">Formation</span>BUT R&amp;T · 1ʳᵉ année</div>
+        <div><span class="mono">Formation</span>BUT R&amp;T · 2ᵉ année · parcours DevCloud</div>
         <div><span class="mono">Établissement</span>IUT de Colmar · UHA</div>
-        <div><span class="mono">Période</span>2025–2026</div>
-        <div><span class="mono">Objectif</span>Alternance · parcours Devcloud</div>
+        <div><span class="mono">Stage recherché</span>8 semaines · 5 avril → 4 juin 2027</div>
+        <div><span class="mono">Domaines</span>Réseaux · systèmes · cloud · support</div>
+        <div><span class="mono">Langues</span>Arabe (maternelle) · Anglais C2 · Français B2</div>
+        <div><span class="mono">Localisation</span>Colmar · permis B</div>
       </div>
     </div>
   </div>
 </section>
 
+<section class="section reveal" id="savoir-faire">
+  <div class="section__head"><span class="section__idx mono">02</span><h2 class="section__title">Savoir-faire</h2></div>
+  <p class="section__intro">Les outils et technologies que j'ai déjà mis en œuvre en cours, en SAÉ ou en projet.</p>
+
+  <div class="skills">
+    <div class="skill skill--rt1">
+      <h3>Réseaux &amp; Télécommunications</h3>
+      <ul class="ticks">
+        <li>Réseaux locaux : VLAN, DHCP, VTP, simulation EVE-NG et GNS3</li>
+        <li>VPN WireGuard, bastion, pare-feu (ufw)</li>
+        <li>Analyse de trames, audit Wi-Fi, PoE</li>
+        <li>Transmission, signaux, IoT (ESP32, MQTT)</li>
+      </ul>
+    </div>
+    <div class="skill skill--ink">
+      <h3>Systèmes, Cloud &amp; DevOps</h3>
+      <ul class="ticks">
+        <li>Linux (Debian), Windows, VirtualBox</li>
+        <li>Docker, Kubernetes (k3s), Helm</li>
+        <li>CI/CD GitLab, Terraform, Ansible</li>
+        <li>Prometheus, Grafana, Traefik, Nginx</li>
+      </ul>
+    </div>
+    <div class="skill skill--rt3">
+      <h3>Programmation &amp; Web</h3>
+      <ul class="ticks">
+        <li>Python (PyQt5, sockets, threads), Java, C, Haskell</li>
+        <li>HTML, CSS, JavaScript, Django, MySQL</li>
+        <li>PowerShell, Git, traitement de données</li>
+      </ul>
+    </div>
+    <div class="skill skill--rt2">
+      <h3>Compétences humaines</h3>
+      <ul class="ticks">
+        <li>Communication claire, technique et non technique</li>
+        <li>Esprit d'analyse et résolution de problèmes</li>
+        <li>Travail en équipe (SAÉ en binôme, CTF RhineTech)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="subhead mono">Projets récents</h3>
+  <div class="projlist">
+    <div class="projlist__item" style="--c: var(--ink);">
+      <h4>Pipeline CI/CD Django</h4>
+      <p>Docker, k3s, Helm · Traefik HTTPS, GitLab CI, Prometheus / Grafana, Oracle Cloud</p>
+    </div>
+    <div class="projlist__item" style="--c: var(--rt1);">
+      <h4>Réseau cloud privé et VPN WireGuard</h4>
+      <p>Terraform, Ansible, Oracle Cloud · bastion, durcissement SSH</p>
+    </div>
+    <div class="projlist__item" style="--c: var(--rt3);">
+      <h4>Carrefour intelligent (SAÉ 3.02)</h4>
+      <p>Serveur TCP multi-clients en Python, protocole JSON, algorithme de Dijkstra</p>
+      <a href="sae3-02.html">Voir le détail →</a>
+    </div>
+    <div class="projlist__item" style="--c: var(--rt2);">
+      <h4>Capteurs IoT</h4>
+      <p>MQTT, Python, MySQL, Django</p>
+    </div>
+    <div class="projlist__item" style="--c: var(--rt1);">
+      <h4>Infrastructure réseau multi-sites</h4>
+      <p>EVE-NG, Cisco IOS · 4 VLAN, routage inter-VLAN, DHCP Linux, VTP</p>
+      <a href="#sae1-02">Voir la SAÉ →</a>
+    </div>
+  </div>
+</section>
+
 <section class="section reveal" id="competences">
-  <div class="section__head"><span class="section__idx mono">02</span><h2 class="section__title">Les trois compétences</h2></div>
+  <div class="section__head"><span class="section__idx mono">03</span><h2 class="section__title">Les trois compétences</h2></div>
   <p class="section__intro">
-    Le référentiel du BUT R&amp;T s'articule autour de trois compétences, développées sur les deux semestres.
+    Le référentiel du BUT R&amp;T s'articule autour de trois compétences, développées au fil des semestres.
     Pour chacune : les <em>apprentissages critiques</em>, les <em>situations professionnelles</em> (mes SAÉ),
     les <em>ressources</em> mobilisées, les <em>preuves</em> et une <em>réflexion personnelle</em>.
   </p>
@@ -302,6 +393,7 @@ body.modal-open { overflow: hidden; }
         <ul class="ticks">
           <li><strong>SAÉ2.01</strong> — Construire un réseau informatique pour une petite structure</li>
           <li><strong>SAÉ1.02</strong> — S'initier aux réseaux informatiques</li>
+          <li><strong>SAÉ1.01</strong> — Se sensibiliser à l'hygiène informatique et à la cybersécurité</li>
         </ul>
       </div>
       <div class="comp__col">
@@ -311,6 +403,7 @@ body.modal-open { overflow: hidden; }
         <div class="proof">
           <a class="proof__item" href="#sae2-01"><span class="proof__dot"></span><span>SAÉ2.01 — Réseau d'une petite structure →</span></a>
           <a class="proof__item" href="#sae1-02"><span class="proof__dot"></span><span>SAÉ1.02 — S'initier aux réseaux informatiques →</span></a>
+          <a class="proof__item" href="#sae1-01"><span class="proof__dot"></span><span>SAÉ1.01 — Hygiène informatique &amp; cybersécurité →</span></a>
         </div>
         <h4>Réflexion personnelle</h4>
         <blockquote class="reflect">Grâce à des simulateurs comme Cisco Packet Tracer, EVE-NG et GNS3, j'ai acquis une compréhension approfondie de l'architecture des réseaux. Au fil des SAÉ, j'ai gagné en méthode et en autonomie. L'évolution de mes projets entre les deux semestres en témoigne : je suis aujourd'hui capable de concevoir, déployer et diagnostiquer une infrastructure réseau complète de manière autonome.</blockquote>
@@ -370,6 +463,7 @@ body.modal-open { overflow: hidden; }
         </ul>
         <h4>Situations professionnelles (SAÉ)</h4>
         <ul class="ticks">
+          <li><strong>SAÉ3.02</strong> — Développer des applications communicantes (BUT2)</li>
           <li><strong>SAÉ2.03</strong> — Mettre en place une solution informatique pour l'entreprise</li>
           <li><strong>SAÉ1.04</strong> — Se présenter sur Internet &nbsp;·&nbsp; <strong>SAÉ1.05</strong> — Traiter des données</li>
         </ul>
@@ -393,8 +487,8 @@ body.modal-open { overflow: hidden; }
 </section>
 
 <section class="section reveal" id="projets">
-  <div class="section__head"><span class="section__idx mono">03</span><h2 class="section__title">SAÉ &amp; Projets</h2></div>
-  <p class="section__intro">Les SAÉ sont les situations d'apprentissage et d'évaluation menées cette année mes preuves concrètes. Cliquez sur « Détails » pour le sujet complet et ce que j'ai réalisé.</p>
+  <div class="section__head"><span class="section__idx mono">04</span><h2 class="section__title">SAÉ &amp; Projets</h2></div>
+  <p class="section__intro">Les SAÉ sont les situations d'apprentissage et d'évaluation menées depuis la première année : ce sont mes preuves concrètes. Cliquez sur « Détails » pour le sujet complet et ce que j'ai réalisé.</p>
 
   <div class="cards">
 
@@ -477,12 +571,12 @@ body.modal-open { overflow: hidden; }
       <h5>Ma contribution</h5>
       <ul>
         <li>Serveur de production sous Debian : Nginx (reverse proxy) devant Gunicorn (WSGI) exécutant Django, configuré en service systemd (démarrage et redémarrage automatiques)</li>
-        <li>Sécurité &amp; fiabilité : utilisateur dédié (pas de root),mode debug désactivé, connexion à la base MySQL distante (settings.py)</li>
+        <li>Sécurité &amp; fiabilité : utilisateur dédié (pas de root), mode debug désactivé, connexion à la base MySQL distante (settings.py)</li>
         <li>Refonte de l'interface (CSS) et tableau de bord avec indicateurs cliquables</li>
         <li>Travail en équipe via Git (branche dédiée, fusion, résolution de conflits) et script start.sh pour lancer les services en une commande</li>
       </ul>
       <h5>Outils</h5>
-      <p>Debian, Nginx, Gunicorn, Django, MySQL, systemd,Git, VirtualBox.</p>
+      <p>Debian, Nginx, Gunicorn, Django, MySQL, systemd, Git, VirtualBox.</p>
     </div>
     <div class="card__links mono"><a href="#">Détails</a><a href="https://github.com/ilkan682/SAE-Gestion-Notes" target="_blank" rel="noopener">Code</a></div>
   </div>
@@ -604,10 +698,12 @@ body.modal-open { overflow: hidden; }
 </section>
 
 <section class="section reveal" id="bilan">
-  <div class="section__head"><span class="section__idx mono">04</span><h2 class="section__title">Bilan &amp; perspectives</h2></div>
+  <div class="section__head"><span class="section__idx mono">05</span><h2 class="section__title">Bilan &amp; perspectives</h2></div>
   <div class="bilan">
     <p class="lead">Cette première année m'a permis de transformer des connaissances dispersées en compétences concrètes : je sais désormais concevoir et configurer un réseau, caractériser un signal et développer de petits outils logiciels. J'ai surtout gagné en autonomie et en méthode face à un problème technique.</p>
-    <p>Au-delà des cours, le CTF RhineTech à Mulhouse (12ᵉ sur 39 équipes) et mon stage de support informatique ont confirmé mon goût pour la cybersécurité et le travail en équipe sous contrainte. Je souhaite approfondir l'administration système, la sécurité et la virtualisation, et viser le parcours Devcloud en 2ᵉ année, idéalement en alternance.</p>
+    <p>Au-delà des cours, le CTF RhineTech à Mulhouse (12ᵉ sur 39 équipes) et mon stage de support informatique ont confirmé mon goût pour la cybersécurité et le travail en équipe sous contrainte. C'est ce qui m'a conduit vers le parcours DevCloud.</p>
+    <p>En 2ᵉ année, j'ai ajouté à ces bases le déploiement et l'automatisation : conteneurs et orchestration (Docker, k3s, Helm), intégration continue avec GitLab, infrastructure cloud décrite en code (Terraform, Ansible) et supervision (Prometheus, Grafana). La SAÉ 3.02 m'a aussi appris à programmer une vraie application client/serveur, et surtout à la rendre robuste.</p>
+    <p>Je cherche maintenant un <strong>stage de 8 semaines, du 5 avril au 4 juin 2027</strong>, en réseaux, systèmes, cloud ou support informatique, pour mettre ces compétences en pratique dans une équipe en production.</p>
   </div>
 </section>
 
@@ -616,7 +712,7 @@ body.modal-open { overflow: hidden; }
 <footer class="footer reveal" id="contact">
   <div class="footer__cta">
     <h2>Restons en contact</h2>
-    <p>Une question sur mon parcours ou mes SAÉ&nbsp;? Écrivez-moi.</p>
+    <p>Une offre de stage d'avril à juin 2027, ou une question sur mes SAÉ&nbsp;? Écrivez-moi.</p>
     <a class="btn btn--solid" href="mailto:alshaqsihussain@gmail.com">alshaqsihussain@gmail.com</a>
   </div>
   <div class="footer__links mono">
@@ -624,7 +720,7 @@ body.modal-open { overflow: hidden; }
     <a href="https://www.linkedin.com/in/hussain-al-shaqsi" target="_blank" rel="noopener">LinkedIn</a>
     <a href="assets/CV_alshaqsi_hussain.pdf" target="_blank" rel="noopener">CV</a>
   </div>
-  <div class="footer__base mono">© 2025–2026 Hussain AL SHAQSI · BUT Réseaux &amp; Télécommunications · Portfolio S2</div>
+  <div class="footer__base mono">© 2025–2027 Hussain AL SHAQSI · BUT Réseaux &amp; Télécommunications · parcours DevCloud</div>
 </footer>
 
 <script>
