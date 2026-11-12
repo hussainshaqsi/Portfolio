@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Monogramme H — deux nœuds reliés par un lien. Grille de 32 : bords alignés au pixel en 16 et 32 px. -->
+  <style>
+    .t{fill:#0E1726;stroke:#0E1726}.s{fill:#FFF}.l{fill:#4F86FF}
+    @media (prefers-color-scheme:dark){.t{fill:#0C1324;stroke:#4F86FF}.s{fill:#E9EEF8}}
+  </style>
+  <rect class="t" x=".5" y=".5" width="31" height="31" rx="6.5"/>
+  <path class="s" d="M8 6h4v20H8zM20 6h4v20h-4z"/>
+  <path class="l" d="M12 14h8v4h-8z"/>
+</svg>
